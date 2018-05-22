@@ -64,7 +64,7 @@ class MoleculeController implements ControllerInterface {
 		return $outPutData;
 	}
 
-	private function entryMolecule()	{
+	private function entryMolecule()	//stripslashes elimina las barras invertidas agregadas 
 		$moleculesArray = json_decode(stripslashes($this->getJsonData()));
 		$idsArray = array();
 		foreach ($moleculesArray as $moleculeObj) {
@@ -130,21 +130,25 @@ class MoleculeController implements ControllerInterface {
 
 	private function similarMolecule() {
 		$outPutData = array();
-		$moleculesArray = json_decode(MoleculeADO::findAllSimilary("CN1C(=O)C=C(c2cccc(Cl)c2)c3cc(ccc13)[C@@](N)(c4ccc(Cl)cc4)c5cncn5C")));
+		$arrayAPI = json_decode(MoleculeADO::findAllSimilary("CN1C(=O)C=C(c2cccc(Cl)c2)c3cc(ccc13)[C@@](N)(c4ccc(Cl)cc4)c5cncn5C")));
+        $moleculesArrayAPI=$arrayAPI->{"molecules"};
 	
-		if(count($moleculesArray) == 0)	{
+		if(count($moleculesArrayAPI) == 0)	{
 			$outPutData[]= false;
 			$errors = array();
 			$errors[]="No molecules found in the database";
 			$outPutData[] = $errors;
 		}
 		else {
+
 			$outPutData[]= true;
 			$moleculesToLocal = array();
-			$i = 0;
-			foreach ($moleculesArray as $molecule) {
-				$moleculesToLocal[]=$molecule->setAll(moleculesArray[$i]);
-				$i++;
+			
+			foreach ($moleculesArrayAPI as $mol) {
+				$molecule = new Molecule();
+				
+				$moleculesToLocal[]=$molecule->setAll($mol->{"molecule_chembl_id"}, $mol->{"molecule_properties"}->{"full_molformula"}, $mol->{"molecule_properties"}->{"full_mwt"}, $mol->{"molecule_properties"}->{"molecular_species"}, $mol->molecule_structure->{"molecule_structures"}->{"canonical_smiles"},$mol->{"molecule_type"},$mol->{"pref_name"},$mol->{"structure_type"});
+				
 			}
 
 			$outPutData[] = $moleculesToLocal;

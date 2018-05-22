@@ -118,7 +118,7 @@ class MoleculeADO implements EntityInterfaceADO {
   * @return object with the query results
   */
   public static function findAllSimilary($smile) {
-    return file_get_contents('https://www.ebi.ac.uk/chembl/api/data/similarity/'.$smile.'/80');
+    return file_get_contents('https://www.ebi.ac.uk/chembl/api/data/similarity/'.$smile.'/80?format=json');
   }
 
 
