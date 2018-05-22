@@ -1,42 +1,42 @@
 <form name="modReviewsForm" novalidate>
-  <table id="example" datatable="ng" class="table" style="width:100%">
+  <table id="moleculeManagament" datatable="ng" class="table">
     <thead>
       <tr>
         <th>ID</th>
+        <th>Formula</th>
+        <th>MWT</th>
+        <th>Species</th>
+        <th>Smiles</th>
+        <th>Type</th>
         <th>Name</th>
-        <th>Surname</th>
-        <th>Mail</th>
-        <th>Nick</th>
-        <th>Nick</th>
-        <th>Nick</th>
-        <th>Nick</th>
+        <th>Structure Type</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="value in usersArray">
+      <tr ng-repeat="value in moleculesArray">
         <td>
-          {{ value.id }}
+          {{ value.molecule_chembl_id }}
         </td>
         <td>
-          {{ value.id }}
+          {{ value.full_molformula }}
         </td>
         <td>
-          {{ value.id }}
+          {{ value.full_mwt }}
         </td>
         <td>
-          {{ value.id }}
+          {{ value.molecular_species }}
         </td>
         <td>
-          {{ value.id }}
+          {{ value.canonical_smiles }}
         </td>
         <td>
-          {{ value.id }}
+          {{ value.molecule_type }}
         </td>
         <td>
-          {{ value.id }}
+          {{ value.pref_name }}
         </td>
         <td>
-          {{ value.id }}
+          {{ value.structure_type }}
         </td>
       </tr>
     </tbody>

@@ -138,9 +138,7 @@
         */
         this.loadUsers = function () {
 
-            //$scope.usersModArray = [];
-
-             $scope.usersArray = [];
+            $scope.usersArray = [];
             $scope.filteredData = [];
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 0

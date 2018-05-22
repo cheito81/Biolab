@@ -1,6 +1,6 @@
 /**
 *  @name Molecule
-*  @author Jose Gimenez - Marvin Hernandez
+*  @author Marvin Hernandez
 *  @version: 1.1
 *  @date: 18/05/2018
 *  @description Defines the property of the product object and contains the methods used to construct the object and access it.
