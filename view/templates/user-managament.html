@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <form name="modReviewsForm" novalidate>
 <table id="example" datatable="ng" class="table table-striped table-bordered" style="width:100%">
@@ -45,3 +46,83 @@
 </form>
 
 
+=======
+<form name="modReviewsForm" novalidate>
+  <table id="UserManagament" datatable="ng" class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Mail</th>
+        <th>Nick</th>
+        <!--<td><a class="btn btn-primary" id="user" ng-click="$parent.showForm=2" style="color: #fff";><i class="fas fa-user-plus"></i> New user </a></td>-->
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <i class="fas fa-user-plus"></i> New user
+</button></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="value in usersArray">
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          <div class="form-group">
+          <input type="text" class="form-control" id="userName{{$index}}" ng-model="value.name" required />
+          </div>
+          <div style="display: none;">{{ value.name }}</div>
+        </td>
+        <td>
+        <div class="form-group">
+          <input type="text" class="form-control" id="userSurname{{$index}}" ng-model="value.surname1" required />
+          </div>
+          <div style="display: none;">{{ value.surname1 }}</div>
+        </td>
+        <td>
+        <div class="form-group">
+          <input type="text" class="form-control" id="userMail{{$index}}" ng-model="value.mail" required />
+          </div>
+          <div style="display: none;">{{ value.mail }}</div>
+        </td>
+        <td>
+        <div class="form-group">
+          <input type="text"  class="form-control" id="userNick{{$index}}" ng-model="value.nick" required />
+          </div>
+          <div style="display: none;">{{ value.nick }}</div>
+        </td>
+
+        <td>
+          <button type="button" class="btn btn-success" ng-click="userCtrl.modifyUser($index)" ng-disabled="modReviewsForm.$invalid"><i class="fas fa-check"></i></button>
+          <button type="button" class="btn btn-danger" ng-click="userCtrl.removeUser(value)" ng-disabled="modReviewsForm.$invalid"><i class="fas fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-info" ng-click="userAction=1;$parent.showForm=0">Back</button>
+</form>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <user-register></user-register>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f

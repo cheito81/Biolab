@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
+=======
+<!DOCTYPE html>
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
 <form class="login2" name="userManagement" ng-submit="userCtrl.userManagement()" novalidate>
     <div class="form-horizontal" >
         <!--
@@ -12,6 +16,7 @@
     </div>
     <br/>
     <div class="form-group">
+<<<<<<< HEAD
         <label class="col-sm-2 control-label" for="formGroup">Name:</label>
         <div class="col-sm-4">
             <input class="form-control" type="text" ng-model="user.name" ng-pattern="/^[a-zA-Z]+$/" required/>
@@ -23,10 +28,24 @@
         <label class="col-sm-2 control-label" for="formGroup">Nick:</label>
         <div class="col-sm-4">
             <input class="form-control" type="text" id="userNick" ng-model="user.nick" ng-blur="userCtrl.checkNick()" required/>
+=======
+        <label class=" control-label" for="formGroup">Name:</label>
+        <div class="">
+            <input class="form-control" type="text" ng-model="newUser.name" ng-pattern="/^[a-zA-Z]+$/" required/>
+        </div>
+        <label class=" control-label" for="formGroup">Last name:</label>
+        <div class="">
+            <input class="form-control" type="text" ng-model="newUser.surname1" ng-pattern="/^[a-zA-Z]+$/" required/>
+        </div>
+        <label class=" control-label" for="formGroup">Nick:</label>
+        <div class="">
+            <input class="form-control" type="text" id="userNick" ng-model="newUser.nick" ng-blur="userCtrl.checkNick()" required/>
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
             <p class="help-block" ng-if="!nickValid" >
                 <b>It already exists a user with this nick, try another one.</b>
             </p>
         </div>
+<<<<<<< HEAD
         <label class="col-sm-2 control-label" for="formGroup">Password:</label>
         <div class="col-sm-4">
             <input class="form-control" type="password" ng-model="user.password" name="password" ng-minlength="6" required/>
@@ -38,13 +57,32 @@
         <div class="col-sm-4">
             <input class="form-control" id="password2" type="password" ng-model="passControl" name="password2" ng-minlength="6" required ng-change="userCtrl.checkPassword()"/>
             <p class="help-block" ng-if="user.password != passControl" >
+=======
+        <label class=" control-label" for="formGroup">Password:</label>
+        <div class="">
+            <input class="form-control" type="password" ng-model="newUser.password" name="password" ng-minlength="6" required/>
+            <p class="help-block" ng-if="newUser.password.$error.minlength || newUser.password.$invalid" >
+                Password must be at least 6 characters
+            </p>
+        </div>
+        <label class=" control-label" for="formGroup">Repeat password:</label>
+        <div class="">
+            <input class="form-control" id="password2" type="password" ng-model="passControl" name="password2" ng-minlength="6" required ng-change="userCtrl.checkPassword()"/>
+            <p class="help-block" ng-if="newUser.password != passControl" >
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
                 Password do not match
             </p>
         </div>
 
+<<<<<<< HEAD
         <label class="col-sm-2 control-label" for="formGroup">User Type:</label>
         <div class="col-sm-4">
             <select class="form-control" id="userType" name="userType" ng-model="user.userType">
+=======
+        <label class=" control-label" for="formGroup">User Type:</label>
+        <div class="">
+            <select class="form-control" id="userType" name="userType" ng-model="newUser.userType">
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
                 <option value="0">Administrator</option>
                 <option value="1">User</option>
             </select>
@@ -53,6 +91,7 @@
 
     </div>
     <div class="form-group">
+<<<<<<< HEAD
         <label class="col-sm-2 control-label" for="formGroup">Address:</label>
         <div class="col-sm-4">
             <input class="form-control" type="text" ng-model="user.address" required>
@@ -67,11 +106,28 @@
         <label class="col-sm-2 control-label" for="formGroup">State:</label>
         <div class="col-sm-4">
             <input class="form-control" type="text" ng-model="user.state" required>
+=======
+        <label class=" control-label" for="formGroup">Address:</label>
+        <div class="">
+            <input class="form-control" type="text" ng-model="newUser.address" required>
+        </div>
+
+        <label class=" control-label" for="formGroup">City:</label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="newUser.city" required>
+        </div>
+
+
+        <label class=" control-label" for="formGroup">State:</label>
+        <div class="col-sm-4">
+            <input class="form-control" type="text" ng-model="newUser.state" required>
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
         </div>
 
 
 
 
+<<<<<<< HEAD
         <label class="col-sm-2 control-label" for="formGroup">Email Adress:</label>
         <div class="col-sm-4">
             <input class="form-control" type="email" ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" ng-model="user.mail" required/>
@@ -84,6 +140,20 @@
     <div class="form-group">
         <label class="col-sm-2 control-label" for="formGroup">Birth Date:</label>
         <div class="col-sm-6">
+=======
+        <label class=" control-label" for="formGroup">Email Adress:</label>
+        <div class="">
+            <input class="form-control" type="email" ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" ng-model="newUser.mail" required/>
+        </div>
+        <label class="control-label" for="formGroup">Phone:</label>
+        <div class="">
+            <input class="form-control" type="text" ng-pattern="/^[6-9]\d{8}$/" placeholder="666111222" ng-model="newUser.telephone" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class=" control-label" for="formGroup">Birth Date:</label>
+        <div class="">
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
             <p class="input-group">
                 <input type="text" class="form-control" id="birthDate"
                 uib-datepicker-popup="{{format}}"
@@ -92,16 +162,27 @@
                 alt-input-formats="altInputFormats"
                 close-text="Close"
                 ng-required="true"
+<<<<<<< HEAD
                 ng-model="user.birthDate"
                 readonly/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="openBirthDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+=======
+                ng-model="newUser.birthDate"
+                readonly/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openBirthDate()"><i class="fas fa-calendar-alt"></i></button>
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
                 </span>
             </p>
         </div>
     </div>
     <div class="form-group">
+<<<<<<< HEAD
         <label class="col-sm-2 control-label" for="formGroup">Image: <img src="{{user.getImage()}}" width="50" height="50" ng-show="userOption == 2"/></label>
+=======
+        <label class=" control-label" for="formGroup">Image: <img src="{{newUser.getImage()}}" width="50" height="50" ng-show="userOption == 2"/></label>
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
         <label class="col-sm-6 control-label" for="formGroup" ng-if="userOption == 1"><input class="form-control" type="file" file="image" accept="image/*" ng-model="image" id="imageUser" valid-file /></label>
         <label class="col-sm-6 control-label" for="formGroup" ng-if="userOption == 2"><input class="form-control" type="file" name="file" accept="image/*" onchange="angular.element(this).scope().setFile(this)" ng-model="imageUserMod" id="imageUserMod" /></label>
 
@@ -110,7 +191,11 @@
         <!--<label class="col-sm-2 control-label" for="formGroup" ng-if="userOption == 2">New Image: <img src="{{userImage}}"></label>-->
 
 
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
     </div>
     <br />
     <br />
@@ -123,7 +208,11 @@
         </div>
         <div class="form-group col-sm-6">
             <label>
+<<<<<<< HEAD
                 <input class="btn btn-default btn-primary btn-block" type="button" value="Back" ng-click="userOption = 0">
+=======
+                <button type="button" class="btn btn-info" ng-click="userAction=1;showForm=0">Back</button>
+>>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
             </label>
         </div>
     </div>
