@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="infoTechApp" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>BioLab - Technology</title>
+  <link rel="shortcut icon" href="images/logo.jpg" />
+
+  <!-- css-->
+  <link rel="stylesheet" type="text/css" href="vendors/bootstrap4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="vendors/bootstrap4/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="vendors/fontawesome/css/fontawesome-all.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+  <!-- =========jQuery========-->
+  <script src="vendors/jquery/js/jQuery.js" type="text/javascript" xml:space="preserve"></script>
+
+  <!-- jQuery Cookies management-->
+  <script src="vendors/jquery/jquery-cookie/jquery.cookie.js" type="text/javascript" xml:space="preserve"></script>
+
+  <!-- Angular-->
+  <script src="vendors/angular/js/angular.min.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/angular-file-upload.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/angular-i18n/angular-locale_es-es.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/ng-currency.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/angular-cookies.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/bootstrap4/js/ui-bootstrap-tpls-2.5.0.min.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/bootstrap4/js/bootstrap.min.js"></script>
+
+  <!-- Pagination-->
+  <script src="vendors/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="vendors/angular-datatables.min.js"></script>
+  <script type="text/javascript" src="vendors/bootstrap4/js/angular-datatables.bootstrap.js"></script>
+
+  <!-- Model-->
+  <script src="js/model/User.js" type="text/javascript" xml:space="preserve"></script>
+
+  <!-- Controllers-->
+  <script src="js/app.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controller/SessionController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controller/UserController.js" type="text/javascript" xml:space="preserve"></script>
+
+</head>
+
+<body class="container" ng-controller="SessionController as sessionCtrl" ng-init="sessionCtrl.sessionControl()">
+
+  <br/>
+  <br class="hidden-xs" />
+  <br class="hidden-xs" />
+
+  <div class="container well" id="login" ng-controller="UserController as userCtrl">
+    <fieldset ng-show="userOption==0">
+      <legend>Login</legend>
+      <form class="login" name="userConnection" ng-submit="userCtrl.connection()" novalidate>
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="user.nick" placeholder="User" value="user1" required />
+          <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required />
+        </div>
+        <div class="form-group row">
+          <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <input class="btn btn-success btn-default btn-primary btn-block" type="submit"  ng-disabled="userConnection.$invalid" value="Login" />
+          </label>
+
+          <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <input class="btn btn-default btn-primary btn-block" type="button" value="Register" ng-click="userOption=1">
+          </label>
+        </div>
+      </form>
+    </fieldset>
+    <div ng-show="userOption==1">
+      <user-register></user-register>
+    </div>
+  </div>
+
+</body>
+
+</html>

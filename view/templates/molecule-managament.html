@@ -1,0 +1,45 @@
+<form name="modReviewsForm" novalidate>
+  <table id="example" datatable="ng" class="table" style="width:100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Mail</th>
+        <th>Nick</th>
+        <th>Nick</th>
+        <th>Nick</th>
+        <th>Nick</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="value in usersArray">
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          {{ value.id }}
+        </td>
+        <td>
+          {{ value.id }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-info" ng-click="userAction=1;$parent.showForm=0">Back</button>
+</form>

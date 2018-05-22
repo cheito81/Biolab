@@ -1,0 +1,18 @@
+.ng-invalid.ng-dirty
+{
+  border-color:red
+}
+
+.ng-valid.ng-dirty
+{
+  border-color:green
+}
+.no-padding{
+  padding:0;
+}
+img {
+  width: 100%;
+}
+.no-padding{
+  padding: 0;
+}
