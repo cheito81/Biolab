@@ -15,6 +15,7 @@
     $scope.molecule = new Molecule();
 
     $scope.moleculesArray = new Array();
+    $scope.moleculesArrayApi = new Array();
     
     //$scope.format = $scope.formats[0];
     
@@ -77,14 +78,12 @@
         */
         this.similaryMolecules = function () {
 
-            //$scope.moleculesModArray = [];
+            $scope.moleculesArrayApi = [];
 
-            $scope.moleculesArray = [];
-            
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 4
                 , action: 10040
-                , jsonData: JSON.stringify("C[C@H](NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N")
+                , jsonData: "C[C@H](NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N"
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
@@ -92,7 +91,7 @@
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var molecule = new Molecule();
                         molecule.construct(outPutData[1][i].molecule_chembl_id, outPutData[1][i].full_molformula, outPutData[1][i].full_mwt, outPutData[1][i].molecular_species, outPutData[1][i].canonical_smiles, outPutData[1][i].molecule_type, outPutData[1][i].pref_name, outPutData[1][i].structure_type);
-                        $scope.moleculesArray.push(molecule);
+                        $scope.moleculesArrayApi.push(molecule);
                     }
                 }
                 else {
@@ -103,6 +102,7 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
+                console.log($scope.moleculesArrayApi);
 
             });
         };

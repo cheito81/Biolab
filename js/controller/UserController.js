@@ -1,10 +1,6 @@
 /**
  * @name: User controller
-<<<<<<< HEAD
- * @author: Jose Gimenez 
-=======
  * @author: Jose Gimenez
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
  * @version: 3.1
  * @description: controll all user functions
  * @date: 17/05/2017
@@ -37,10 +33,8 @@
     $scope.userImage;
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
-<<<<<<< HEAD
-=======
     $scope.newUser = new User();
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
+
     $scope.dateOptions = {
       dateDisabled: "",
       formatYear: 'yyyy',
@@ -60,11 +54,7 @@
     //Methods
     /**
      * @name: userManagement
-<<<<<<< HEAD
-     * @author: Jose Gimenez 
-=======
      * @author: Jose Gimenez
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
      * @version: 3.1
      * @description: manage users from a data base. It comunicates with php using ajax
      * 							Actually it only allow to entry a new user
@@ -75,10 +65,6 @@
       switch ($scope.userOption) {
         //User entry: index.html
         case 1:
-<<<<<<< HEAD
-=======
-
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
           var imageFile = $("#imageUser")[0].files[0];
 
           var imagesArrayToSend = new FormData();
@@ -87,11 +73,7 @@
 
           $http({
             method: 'POST',
-<<<<<<< HEAD
-            url: 'php/controller/MainController.php?controllerType=2&action=10010&jsonData=' + $scope.user.getNick(),
-=======
             url: 'php/controller/MainController.php?controllerType=2&action=10010&jsonData=' + $scope.newUser.getNick(),
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
             headers: {
               'Content-Type': undefined
             },
@@ -103,25 +85,17 @@
             if (outPutData[0] === true) {
               //File uploaded
               //$scope.user.setId(null);
-<<<<<<< HEAD
-              $scope.user.setActive(1);
-              $scope.user.setImage(outPutData[1][0]);
-              $scope.user = angular.copy($scope.user);
-=======
+
               $scope.newUser.setActive(1);
               $scope.newUser.setImage(outPutData[1][0]);
               $scope.newUser = angular.copy($scope.newUser);
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
 
               //Server conenction to verify user's data
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 0,
                 action: 10010,
-<<<<<<< HEAD
-                jsonData: JSON.stringify($scope.user)
-=======
                 jsonData: JSON.stringify($scope.newUser)
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
+
               });
 
               promise.then(function(outPutData) {
@@ -166,13 +140,8 @@
         */
         this.loadUsers = function () {
 
-<<<<<<< HEAD
-            //$scope.usersModArray = [];
-
-             $scope.usersArray = [];
-=======
             $scope.usersArray = [];
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
+
             $scope.filteredData = [];
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 0
@@ -196,22 +165,14 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
-<<<<<<< HEAD
-                
-=======
 
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
             });
         };
 
 
      /**
         * @name: modifyUser
-<<<<<<< HEAD
-        * @author: Jose Gimenez 
-=======
         * @author: Jose Gimenez
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
         * @version: 3.1
         * @description: modify a user existing ni a data base. It comunicates with php using ajax
         * @date: 17/05/2017
@@ -219,19 +180,10 @@
         */
         this.modifyUser = function (index) {
 
-<<<<<<< HEAD
-            $scope.filteredData[index].setUserId($scope.filteredData[index].userId.getId());
-
-            var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
-                controllerType: 0
-                , action: 10020
-                , jsonData: JSON.stringify([angular.copy($scope.filteredData[index])])
-=======
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 0
                 , action: 10020
                 , jsonData: JSON.stringify([angular.copy($scope.usersArray[index])])
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
@@ -250,52 +202,12 @@
 
             /**
         * @name: removeUser
-<<<<<<< HEAD
-        * @author: Jose Gimenez 
-=======
         * @author: Jose Gimenez - Marvin Hernandez
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
         * @version: 3.1
         * @description: remove a user existing ni a data base. It comunicates with php using ajax
         * @date: 17/05/2017
         * @return: none
         */
-<<<<<<< HEAD
-        this.removeUser = function (user) {
-            var userFound = new User();
-            var usersArray = [];
-            $scope.usersModArray = angular.copy($scope.usersModArray);
-            $scope.filteredData = angular.copy($scope.filteredData);
-
-            user = angular.copy(user);
-            usersArray.push(user);
-            var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
-                controllerType: 0
-                , action: 10060
-                , jsonData: JSON.stringify(usersArray)
-            });
-            promise.then(function (outPutData) {
-                if (outPutData[0] === true) {
-                    
-                    $scope.usersModArray.splice($scope.usersModArray.indexOf(user), 1);
-                    $scope.filteredData.splice($scope.filteredData.indexOf(user), 1);
-                    alert("User deleted correctly");
-                }
-                else {
-                    if (angular.isArray(outPutData[1])) {
-                        alert(outPutData[1]);
-                    }
-                    else {
-                        alert("There has been an error in the server, try later");
-                    }
-                }
-            });
-        };
-    /**
-     * @name: connection
-     * @author: Jose Gimenez 
-=======
-
         this.removeUser = function (user) {
             var userFound = new User();
             var usersArray = [];
@@ -336,7 +248,6 @@
     /**
      * @name: connection
      * @author: Jose Gimenez
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
      * @version: 3.1
      * @description: it allows to establishes a session variable to controll session user
      * @date: 17/05/2017
@@ -371,11 +282,7 @@
 
     /**
      * @name: setFile
-<<<<<<< HEAD
-     * @author: Jose Gimenez 
-=======
      * @author: Jose Gimenez
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
      * @version: 3.1
      * @description: it allows to load a new file into user file variable.
      * @date: 17/05/2017

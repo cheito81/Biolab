@@ -4,11 +4,8 @@ $(document).ready(function () {
 });
 
 (function(){
-<<<<<<< HEAD
-  var infoTechApp = angular.module('infoTechApp', ['ng-currency', 'ui.bootstrap', 'ngCookies', 'angularUtils.directives.dirPagination','datatables']);
-=======
+
   var infoTechApp = angular.module('infoTechApp', ['ng-currency', 'ui.bootstrap', 'ngCookies','datatables']);
->>>>>>> fe66bdb266cf75ed6542ae77ca69e76808e3626f
 
   infoTechApp.factory('userConnected', function(){
       // I know this doesn't work, but what will?

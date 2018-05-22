@@ -1,6 +1,6 @@
 <?php
 require_once "EntityInterface.php";
-class Review implements EntityInterface{
+class Molecule implements EntityInterface, JsonSerializable{
     //put your molecular_species here
     private $molecule_chembl_id;
     private $full_molformula;
@@ -56,7 +56,7 @@ class Review implements EntityInterface{
 
   
 
-    public function getAll(){
+    public function jsonSerialize(){
         $data = array();
         $data["molecule_chembl_id"] = $this->molecule_chembl_id;
         $data["full_molformula"] = $this->full_molformula;
