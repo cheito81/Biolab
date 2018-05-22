@@ -72,7 +72,7 @@
         * @author: Marvin Heranndez
         * @version: 3.1
         * @description: load all molecules existing in a data base. It comunicates with php using ajax
-        * @date: 17/05/2017
+        * @date: 17/05/2018
         * @return: none
         */
         this.similaryMolecules = function () {
