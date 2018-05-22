@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<form name="modReviewsForm" novalidate>
+    <div>
+        <table class="table table-bordered" ng-disabled="modReviewsForm.$invalid">
+            <tr>
+                <th>Rate</th>
+                <th>Opinion</th>
+                <th>Reviews per page</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" ng-model="RateSearch" ng-disabled="modReviewsForm.$invalid" />
+                </td>
+                <td>
+                    <input type="text" ng-model="OpinionSearch" ng-disabled="modReviewsForm.$invalid" />
+                </td>
+                <td>
+                    <input type="number" min="1" max="100" class="form-control" ng-model="pageSize" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h1>Reviews found:</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>Rate</th>
+            <th>Opinion</th>
+            <th>User email</th>
+            <th>Modify Review</th>
+            <th>Remove</th>
+        </tr>
+        <tr dir-paginate="review in filteredData | itemsPerPage: pageSize" current-page="currentPage">
+            <td>
+                <input type="text" id="reviewRate{{$index}}" ng-model="review.rate" ng-pattern="/^([0-9]|10)$/" required />
+            </td>
+            <td>
+                <input type="text" id="reviewOpinion{{$index}}" ng-model="review.opinion" required />
+            </td>
+            <td>
+                <select class="form-control" id="reviewUserEmail{{$index}}" ng-model="review.userId" ng-options="user.getMail() for user in usersArray track by user.id" required></select>
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" ng-click="reviewCtrl.modifyReview($index)" ng-disabled="modReviewsForm.$invalid"> Modify </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" ng-click="reviewCtrl.removeReview(review)" ng-disabled="modReviewsForm.$invalid"> X </button>
+            </td>
+        </tr>
+    </table>
+    <div ng-show="modReviewsForm.$valid">
+        <div class="text-left" boundary-links="true">
+            <dir-pagination-controls boundary-links="true" template-url="view/templates/dir-pagination-controls.html"></dir-pagination-controls>
+        </div>
+    </div>
+    <button type="button" class="btn btn-info" ng-click="userAction=1;$parent.showForm=0">Back</button>
+</form>

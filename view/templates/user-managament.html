@@ -1,0 +1,47 @@
+
+<form name="modReviewsForm" novalidate>
+<table id="example" datatable="ng" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+            	<th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Mail</th>
+                <th>Nick</th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="value in usersArray">
+                    <td>
+                        {{ value.id }}
+                    </td>
+                    <td>
+                        <input type="text" id="userName{{$index}}" ng-model="value.name" required />
+                        <div style="display: none;">{{ value.name }}</div>
+                    </td>
+                    <td>
+                        <input type="text" id="userSurname{{$index}}" ng-model="value.surname1" required />
+                        <div style="display: none;">{{ value.surname1 }}</div>
+                    </td>
+                    <td>
+                        <input type="text" id="userMail{{$index}}" ng-model="value.mail" required />
+                        <div style="display: none;">{{ value.mail }}</div>
+                    </td>
+                    <td>
+                        <input type="text" id="userNick{{$index}}" ng-model="value.nick" required />
+                        <div style="display: none;">{{ value.nick }}</div>
+                    </td>
+
+                    <td>
+                        <button type="button" class="btn btn-warning" ng-click="userCtrl.modifyUser($index)" ng-disabled="modReviewsForm.$invalid"> Modify </button>
+                        <button type="button" class="btn btn-danger" ng-click="userCtrl.removeUser(user)" ng-disabled="modReviewsForm.$invalid"> X </button>
+                    </td>
+            </tr>
+        </tbody>
+</table>
+    <button type="button" class="btn btn-info" ng-click="userAction=1;$parent.showForm=0">Back</button>
+</form>
+
+
