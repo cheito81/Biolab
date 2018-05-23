@@ -72,6 +72,87 @@
         };
 
 
+
+        /**
+        * @name: modifyMolecule
+        * @author: Jose Gimenez
+        * @version: 3.1
+        * @description: modify a molecule existing ni a data base. It comunicates with php using ajax
+        * @date: 17/05/2017
+        * @return: none
+        */
+        this.modifyMolecule = function (index) {
+
+            var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
+                controllerType: 4
+                , action: 10020
+                , jsonData: JSON.stringify([angular.copy($scope.moleculesArray[index])])
+            });
+            promise.then(function (outPutData) {
+                if (outPutData[0] === true) {
+                    alert("Molecule modified correctly");
+                }
+                else {
+                    if (angular.isArray(outPutData[1])) {
+                        alert(outPutData[1]);
+                    }
+                    else {
+                        alert("There has been an error in the server, try later");
+                    }
+                }
+            });
+        };
+
+
+        /**
+        * @name: MoleculesInsert
+        * @author: Marvin Heranndez
+        * @version: 3.1
+        * @description: Insert object in the data base
+        * @date: 23/05/2018
+        * @return: none
+        */
+        this.moleculeInsert = function () {
+          
+            if (outPutData[0] === true) {
+              //File uploaded
+              //$scope.molecule.setId(null);
+
+              $scope.molecule = angular.copy($scope.molecule);
+
+              //Server conenction to verify molecule's data
+              var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
+                controllerType: 4,
+                action: 10000,
+                jsonData: JSON.stringify($scope.molecule)
+
+              });
+
+              promise.then(function(outPutData) {
+                if (outPutData[0] === true) {
+                  alert("Molecule inserted correctly");
+                  $window.location.href = 'index.html';
+                } else {
+                  if (angular.isArray(outPutData[1])) {
+                    alert(outPutData[1]);
+                  } else {
+                    alert("There has been an error in the server, try later (1)");
+                  }
+                }
+              });
+
+            } else {
+              if (angular.isArray(outPutData[1])) {
+                showErrors(outPutData[1]);
+              } else {
+                alert("There has been an error in the server, try later (2)");
+              }
+            }
+          
+          //console.log($scope.molecule.molecule_chembl_id);
+        };
+
+
     /**
         * @name: similaryMolecules
         * @author: Marvin Heranndez
@@ -113,6 +194,10 @@
         };
 
   }]);
+
+        
+
+  
 
   /**
    * @name: MoleculeManagament

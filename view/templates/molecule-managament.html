@@ -11,6 +11,9 @@
         <th>Type</th>
         <th>Name</th>
         <th>Structure Type</th>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moleculeModal">
+          <i class="fas fa-plus"></i> New Molecule</button>
+        </td>
       </tr>
     </thead>
     <tbody>
@@ -39,8 +42,39 @@
         <td>
           {{ moleculeObj.structure_type }}
         </td>
+        <td>
+          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modReviewsForm.$invalid"><i class="fa fa-search"></i></button>
+          <button type="button" class="btn btn-success" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modReviewsForm.$invalid"><i class="fas fa-check"></i></button>
+          <button type="button" class="btn btn-danger" ng-click="moleculeCtrl.removeMolecule(value)" ng-disabled="modReviewsForm.$invalid"><i class="fas fa-trash-alt"></i></button>
+        </td>
       </tr>
     </tbody>
   </table>
   <button type="button" class="btn btn-info" ng-click="userAction=1;$parent.showForm=0">Back</button>
 </form>
+
+<!-- Modal -->
+<div class="modal fade" id="moleculeModal" tabindex="-1" role="dialog" aria-labelledby="moleculeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="moleculeModalLabel">Insert molecule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <form class="moleculeEntry" name="moleculeManagement" ng-submit="moleculeCtrl.moleculeInsert()" novalidate>
+        <div class="modal-body">
+          <molecules-entry></molecules-entry>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Insert</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
