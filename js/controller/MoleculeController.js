@@ -114,13 +114,15 @@
         */
         this.moleculeInsert = function () {
           
-            if (outPutData[0] === true) {
+            
               //File uploaded
               //$scope.molecule.setId(null);
 
               $scope.molecule = angular.copy($scope.molecule);
 
               //Server conenction to verify molecule's data
+              console.log($scope.molecule);
+
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 4,
                 action: 10000,
@@ -140,14 +142,6 @@
                   }
                 }
               });
-
-            } else {
-              if (angular.isArray(outPutData[1])) {
-                showErrors(outPutData[1]);
-              } else {
-                alert("There has been an error in the server, try later (2)");
-              }
-            }
           
           //console.log($scope.molecule.molecule_chembl_id);
         };

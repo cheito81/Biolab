@@ -64,14 +64,17 @@ class MoleculeController implements ControllerInterface {
 		return $outPutData;
 	}
 
-	private function entryMolecule(){	//stripslashes elimina las barras invertidas agregadas 
+	private function entryMolecule(){	//stripslashes elimina las barras invertidas agregadas
+
 		$moleculesArray = json_decode(stripslashes($this->getJsonData()));
+		var_dump($moleculesArray);
+
 		$idsArray = array();
 		foreach ($moleculesArray as $moleculeObj) {
 			$molecule = new Molecule();
-			$molecule->setAll(0, $moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type, $moleculeObj->pref_name, $moleculeObj->structure_type);
-			$molecule->setId(MoleculeADO::create($molecule));
-			$idsArray[]=$molecule->getId();
+			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type, $moleculeObj->pref_name, $moleculeObj->structure_type);
+			$molecule->setMolecule_chembl_id(MoleculeADO::create($molecule));
+			$idsArray[]=$molecule->getMolecule_chembl_id();
 		}
 		$outPutData = array();
 		$outPutData[]= true;
@@ -113,7 +116,7 @@ class MoleculeController implements ControllerInterface {
        
 		return $outPutData;
 	}
-
+	
 	private function deleteMolecule() {
 		
 		$moleculesArray = json_decode(stripslashes($this->getJsonData()));
