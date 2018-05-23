@@ -69,7 +69,7 @@ class MoleculeController implements ControllerInterface {
 		$idsArray = array();
 		foreach ($moleculesArray as $moleculeObj) {
 			$molecule = new Molecule();
-			$molecule->setAll(0, $moleculeObj->moleculeFormula, $moleculeObj->moleculeWeight, $moleculeObj->moleculeSimilarity1, $moleculeObj->moleculeSimilarity2);
+			$molecule->setAll(0, $moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type, $moleculeObj->pref_name, $moleculeObj->structure_type);
 			$molecule->setId(MoleculeADO::create($molecule));
 			$idsArray[]=$molecule->getId();
 		}
