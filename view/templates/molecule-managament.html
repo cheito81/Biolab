@@ -1,6 +1,6 @@
 <form name="modReviewsForm" novalidate>
-  <!--<table id="moleculeManagament" datatable="ng" class="table">-->
-  <table id="moleculeManagament" class="table">
+  <table id="moleculeManagament" datatable="ng" class="table">
+  <!--<table id="moleculeManagament" class="table">-->
     <thead>
       <tr>
         <th>ID</th>
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="moleculeObj in moleculesArrayApi">
+      <tr ng-repeat="moleculeObj in moleculesArrayAux">
         <td>
           {{ moleculeObj.molecule_chembl_id }}
         </td>

@@ -44,24 +44,29 @@ INSERT INTO `users` (`id`, `name`, `surname1`, `nick`, `password`, `userType`,`a
 
 
 DROP TABLE IF EXISTS `molecules`;
+--
+-- Estructura de tabla para la tabla `molecules`
+--
+
 CREATE TABLE `molecules` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `accessionNumber` varchar (10) NOT NULL,
-  `moleculeFormula` varchar(150) NOT NULL,
-  `moleculeWeight` float NOT NULL,
-  `moleculeSimilarity1` varchar(150) NOT NULL,
-  `moleculeSimilarity2` varchar(150) NOT NULL,
+  `molecule_chembl_id` varchar(150) NOT NULL,
+  `full_molformula` varchar(100) NOT NULL,
+  `full_mwt` float NOT NULL,
+  `molecular_species` varchar(100) NOT NULL,
+  `canonical_smiles` varchar(2000) NOT NULL,
+  `molecule_type` varchar(250) NOT NULL,
+  `pref_name` varchar(150) NOT NULL,
+  `structure_type` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `molecules`
 --
 
-INSERT INTO `molecules` (`id`, `accessionNumber`, `moleculeFormula`,`moleculeWeight`, `moleculeSimilarity1`, `moleculeSimilarity2`) VALUES
-(1, 'C8CN33', 'ACH2CHN3OCHN', 12.36, 'MoleculeSimilarity11', 'MoleculeSimilarity21'),
-(2, 'P20231','CN3H2OHN3', 43.57,'MoleculeSimilarity12', 'MoleculeSimilarity22'),
-(3, 'C8CNP3','H2O3NCHN3O2', 105.23,'MoleculeSimilarity13', 'MoleculeSimilarity23');
+INSERT INTO `molecules` (`molecule_chembl_id`, `full_molformula`, `full_mwt`, `molecular_species`, `canonical_smiles`, `molecule_type`, `pref_name`, `structure_type`) VALUES
+('CHEMBL396778', 'C17H19FN2O2', 302.34, 'NEUTRAL', 'C[C@H(NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N', 'Small molecule', 'SAFINAMIDE', 'MOL'),
+('CHEMBL6329', 'C17H12ClN3O3', 341.75, 'ACID', 'Cc1cc(ccc1C(=O)c2ccccc2Cl)N3N=CC(=O)NC3=O', 'Small molecule', '', 'MOL'),
+('CHEMBL82327', 'C17H19FN2O2', 302.34, 'NEUTRAL', 'C[C@@H (NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N', 'Small molecule', '', 'MOL');
 
 
 CREATE USER IF NOT EXISTS 'biolab'@'localhost' IDENTIFIED BY 'biolab';

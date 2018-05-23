@@ -40,7 +40,9 @@ class Molecule implements EntityInterface, JsonSerializable{
         $this->molecular_species = $molecular_species;
     }
 
-    public function setCanonical_smiles($canonical_smiles) {$this->canonical_smiles = $canonical_smiles;}
+    public function setCanonical_smiles($canonical_smiles) {
+        $this->canonical_smiles = $canonical_smiles;
+    }
 
     public function setMolecule_type($molecule_type) {
         $this->molecule_type = $molecule_type;

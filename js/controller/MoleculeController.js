@@ -14,9 +14,10 @@
 
     $scope.molecule = new Molecule();
 
-    $scope.moleculesArray = new Array();
-    $scope.moleculesArrayApi = new Array();
-    
+    $scope.moleculesArray = new Array();    //Array from my database.
+    $scope.moleculesArrayApi = new Array(); //Array from API (similarity).
+    $scope.moleculesArrayAux = new Array(); //array for view molecules in the table.
+     
     //$scope.format = $scope.formats[0];
     
     $scope.newMolecule = new Molecule();
@@ -33,17 +34,18 @@
         this.loadMolecules = function () {
 
             $scope.moleculesArray = [];
-            $scope.filteredData = [];
+            $scope.moleculesArrayAux = [];
+
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 4
-                , action: 10050
+                , action: 10010
                 , jsonData: JSON.stringify("")
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
-                  console.log(outPutData);
+                  //console.log(outPutData);
                     for (var i = 0; i < outPutData[1].length; i++) {
-                        var molecule = new User();
+                        var molecule = new Molecule();
                         molecule.construct(outPutData[1][i].molecule_chembl_id,
                                             outPutData[1][i].full_molformula,
                                             outPutData[1][i].full_mwt,
@@ -54,6 +56,7 @@
                                             outPutData[1][i].structure_type);
                         $scope.moleculesArray.push(molecule);
                     }
+                    
                 }
                 else {
                     if (angular.isArray(outPutData[1])) {
@@ -63,13 +66,14 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
+                $scope.moleculesArrayAux = $scope.moleculesArray; //for view
 
             });
         };
 
 
     /**
-        * @name: loadMolecules
+        * @name: similaryMolecules
         * @author: Marvin Heranndez
         * @version: 3.1
         * @description: load all molecules existing in a data base. It comunicates with php using ajax
@@ -102,13 +106,12 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
-                console.log($scope.moleculesArrayApi);
+                //console.log($scope.moleculesArrayApi);
+                $scope.moleculesArrayAux = $scope.moleculesArrayApi // for print in the table
 
             });
         };
 
-
-    
   }]);
 
   /**

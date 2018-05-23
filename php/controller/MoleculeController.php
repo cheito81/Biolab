@@ -93,7 +93,7 @@ class MoleculeController implements ControllerInterface {
 			$outPutData[]= true;
 			$moleculesToLocal = array();
 			foreach ($moleculesArray as $molecule) {
-				$moleculesToLocal[]=$molecule->getAll();
+				$moleculesToLocal[]=$molecule->jsonSerialize();
 			}
 			$outPutData[] = $moleculesToLocal;
 		}
@@ -130,7 +130,10 @@ class MoleculeController implements ControllerInterface {
 
 	private function similarMolecule() {
 		$outPutData = array();
+		$smile = "";
 		//$arrayAPI = json_decode(MoleculeADO::findAllSimilary(stripslashes($this->getJsonData())));
+		$smile = stripslashes($this->getJsonData());
+		//echo $smile;
 		$arrayAPI = json_decode(MoleculeADO::findAllSimilary(stripslashes($this->getJsonData())));
         $moleculesArrayAPI=$arrayAPI->{"molecules"};
 	

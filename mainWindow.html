@@ -115,9 +115,11 @@
     <div ng-show="showForm==2">
       <user-register></user-register>
     </div>
-    <div class="container" ng-show="showForm==4">
+    <!--<div class="container" ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.similaryMolecules()">-->
+    <div class="container" ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
       <molecule-managament></molecule-managament>
     </div>
+
     <div class="container" ng-show="showForm==5" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.similaryMolecules()">
       <molecules-entry></molecules-entry>
     </div>

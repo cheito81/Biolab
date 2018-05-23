@@ -1,8 +1,8 @@
 <?php
-/** userClass.php
-* Entity userClass
-* autor  Roberto Plana
-* version 2012/09
+/** 
+* name moleculeDAO
+* autor  Marvin Hernandez
+* version 3.0
 */
 require_once "BDconnect.php";
 require_once "EntityInterfaceADO.php";
@@ -11,11 +11,15 @@ require_once "../model/Molecule.php";
 class MoleculeADO implements EntityInterfaceADO {
 
   //----------Data base Values---------------------------------------
-  private static $tableName = "molecule";
+  private static $tableName = "molecules";
   private static $colNameId = "molecule_chembl_id";
   private static $colNameFull_molformula = "full_molformula";
   private static $colNameFull_mwt = "full_mwt";
   private static $colNameMolecular_species = "molecular_species";
+  private static $colNameCanonical_smiles = "canonical_smiles";
+  private static $colNameMolecule_type= "molecule_type";
+  private static $colNamePref_name = "pref_name";
+  private static $colNameStructure_type = "structure_type";
  
 
 
@@ -53,14 +57,22 @@ class MoleculeADO implements EntityInterfaceADO {
     $full_molformula = $res[ MoleculeADO::$colNameFull_molformula ];
     $full_mwt = $res[ MoleculeADO::$colNameFull_mwt ];
     $molecular_species = $res[ MoleculeADO::$colNameMolecular_species ];
-    $userEmail = /*$res[ MoleculeADO::$colNameUserEmail ]*/ "prueba@prueba.com";
+    $canonical_smiles = $res[ MoleculeADO::$colNameCanonical_smiles ];
+    $molecule_type = $res[ MoleculeADO::$colNameMolecule_type ];
+    $pref_name = $res[ MoleculeADO::$colNamePref_name ];
+    $structure_type = $res[ MoleculeADO::$colNameStructure_type];
+    //$userEmail = /*$res[ MoleculeADO::$colNameUserEmail ]*/ "prueba@prueba.com";
 
     //Object construction
     $entity = new Molecule();
-    $entity->setId($molecule_chembl_id);
+    $entity->setMolecule_chembl_id($molecule_chembl_id);
     $entity->setFull_molformula($full_molformula);
     $entity->setFull_mwt($full_mwt);
     $entity->setMolecular_species($molecular_species);
+    $entity->setCanonical_smiles($canonical_smiles);
+    $entity->setMolecule_type($molecule_type);
+    $entity->setPref_name($pref_name);
+    $entity->setStructure_type($structure_type);
     return $entity;
   }
 
@@ -156,7 +168,7 @@ class MoleculeADO implements EntityInterfaceADO {
 
     $molecule_chembl_id = $conn->executionInsert($cons, $arrayValues);
 
-    $review->setId($molecule_chembl_id);
+    $review->setMolecule_chembl_id($molecule_chembl_id);
 
     return $review->getId();
   }
