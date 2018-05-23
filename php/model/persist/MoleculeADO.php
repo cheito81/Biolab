@@ -104,9 +104,9 @@ class MoleculeADO implements EntityInterfaceADO {
   * @param molecule_chembl_id
   * @return object with the query results
   */
-  public static function findById( $review ) {
+  public static function findById( $molecule ) {
     $cons = "select * from `".MoleculeADO::$tableName."` where ".MoleculeADO::$colNameId." = ?";
-    $arrayValues = [$review->getId()];
+    $arrayValues = [$molecule->getId()];
 
     return MoleculeADO::findByQuery( $cons, $arrayValues );
   }
@@ -141,9 +141,9 @@ class MoleculeADO implements EntityInterfaceADO {
   * @param molecule_chembl_id
   * @return object with the query results
   */
-  public static function findLikeMoleculeWeight( $review ) {
+  public static function findLikeMoleculeWeight( $molecule ) {
     $cons = "select * from `".MoleculeADO::$tableName."` where ".MoleculeADO::$colNameFull_mwt." like ?";
-    $arrayValues = ["%".$review->getMoleculeWeight()."%"];
+    $arrayValues = ["%".$molecule->getMoleculeWeight()."%"];
 
     return MoleculeADO::findByQuery( $cons, $arrayValues );
   }
@@ -152,7 +152,7 @@ class MoleculeADO implements EntityInterfaceADO {
   * create()
   * insert a new row into the database
   */
-  public function create($review) {
+  public function create($molecule) {
     //Connection with the database
     try {
       $conn = DBConnect::getInstance();
@@ -163,21 +163,21 @@ class MoleculeADO implements EntityInterfaceADO {
       die();
     }
 
-    $cons="insert into ".MoleculeADO::$tableName." (`full_molformula`,`full_mwt`,`molecular_species`,`userEmail`) values (?, ?, ?, ?)" ;
-    $arrayValues= [$review->getMoleculeFormula(),$review->getMoleculeWeight(), $review->getMoleculeSimilarity1(), $review->getMoleculeSimilarity2()];
+    $cons="insert into ".MoleculeADO::$tableName." (`molecule_chembl_id`,`full_molformula`,`full_mwt`,`molecular_species`,`canonical_smiles`,`molecule_type`,`pref_name`,`structure_type`) values (?, ?, ?, ?, ?, ?, ?, ?)" ;
+    $arrayValues= [$molecule->getMolecule_chembl_id(),$molecule->getFull_molformula(), $molecule->getFull_mwt(), $molecule->getMolecular_species(), $molecule->getCanonical_smiles(),$molecule->getMolecule_type(), $molecule->getPref_name(), $molecule->getStructure_type()];
 
     $molecule_chembl_id = $conn->executionInsert($cons, $arrayValues);
 
-    $review->setMolecule_chembl_id($molecule_chembl_id);
+    $molecule->setMolecule_chembl_id($molecule_chembl_id);
 
-    return $review->getId();
+    return $molecule->getId();
   }
 
   /**
   * delete()
   * it deletes a row from the database
   */
-  public function delete($review) {
+  public function delete($molecule) {
     //Connection with the database
     try {
       $conn = DBConnect::getInstance();
@@ -190,7 +190,7 @@ class MoleculeADO implements EntityInterfaceADO {
 
 
     $cons="delete from `".MoleculeADO::$tableName."` where ".MoleculeADO::$colNameId." = ?";
-    $arrayValues= [$review->getId()];
+    $arrayValues= [$molecule->getId()];
 
     $conn->execution($cons, $arrayValues);
   }
@@ -200,7 +200,7 @@ class MoleculeADO implements EntityInterfaceADO {
   * update()
   * it updates a row of the database
   */
-  public function update($review) {
+  public function update($molecule) {
     //Connection with the database
     try {
       $conn = DBConnect::getInstance();
@@ -210,9 +210,10 @@ class MoleculeADO implements EntityInterfaceADO {
       die();
     }
 
-    $cons="update `".MoleculeADO::$tableName."` set ".MoleculeADO::$colNameFull_molformula." = ?,".
-    MoleculeADO::$colNameFull_mwt." = ?, ".MoleculeADO::$colNameMolecular_species." = ? where ".MoleculeADO::$colNameId." = ?";
-    $arrayValues= [$review->getFull_molformula(), $review->getFull_mwt(), $review->getMolecular_species(), $review->getId()];
+    $cons="update `".MoleculeADO::$tableName."` set ".MoleculeADO::$colNameFull_molformula." = ?, ".MoleculeADO::$colNameFull_mwt." = ?,".MoleculeADO::$colNameMolecular_species." = ?,".MoleculeADO::$colNameCanonical_smiles." = ?,".MoleculeADO::$colNameMolecule_type." = ?,".MoleculeADO::$colNamePref_name." = ?,".MoleculeADO::$colNameStructure_type." = ?  where ".MoleculeADO::$colNameId." = ?";
+
+    $arrayValues= [$molecule->getFull_molformula(), $molecule->getFull_mwt(), $molecule->getMolecular_species(), $molecule->getCanonical_smiles(),$molecule->getMolecule_type(), $molecule->getPref_name(), $molecule->getStructure_type(),$molecule->getMolecule_chembl_id()];
+
 
     $conn->execution($cons, $arrayValues);
 
