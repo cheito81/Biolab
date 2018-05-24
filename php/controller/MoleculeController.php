@@ -107,8 +107,8 @@ class MoleculeController implements ControllerInterface {
 		$outPutData[0]= true;
 		foreach($moleculesArray as $moleculeObj) {
 			$molecule = new Molecule();
-			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type,$moleculeObj->pref_name,$moleculeObj->structure_type );
-			
+			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type, $moleculeObj->pref_name, $moleculeObj->structure_type );
+			//var_dump($molecule);
 			MoleculeADO::update($molecule);
 		}
        

@@ -22,7 +22,7 @@ class Molecule implements EntityInterface, JsonSerializable{
 
     public function getCanonical_smiles() { return $this->canonical_smiles; }
     public function getMolecule_type() {return $this->molecule_type;}
-    public function getPref_name() {return $this->molecule_type;}
+    public function getPref_name() {return $this->pref_name;}
     public function getStructure_type() {return $this->structure_type;}
    
 

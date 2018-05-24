@@ -261,7 +261,7 @@
             });
         };
 
-            /**
+        /**
         * @name: removeUser
         * @author: Jose Gimenez - Marvin Hernandez
         * @version: 3.1
@@ -269,26 +269,23 @@
         * @date: 17/05/2017
         * @return: none
         */
-        this.removeUser = function (user) {
+        this.removeUser = function (index) {
             var userFound = new User();
             var usersArray = [];
 
             var rm = confirm("sure you want to delete the user?");
             if (rm == true) {
-              user = angular.copy(user);
-              usersArray.push(user);
-
-              console.log(usersArray);
+             
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                   controllerType: 0
                   , action: 10060
-                  , jsonData: JSON.stringify(usersArray)
+                  , jsonData: JSON.stringify([angular.copy($scope.usersArray[index])])
               });
 
               promise.then(function (outPutData) {
                   if (outPutData[0] === true) {
-                      var pos = $scope.usersArray.indexOf(user);
-                      $scope.usersArray.splice(pos, 1);
+                      
+                      $scope.usersArray.splice(index, 1);
                       alert("User deleted correctly");
                   }
                   else {

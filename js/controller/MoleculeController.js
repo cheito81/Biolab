@@ -51,7 +51,7 @@
                                             outPutData[1][i].full_mwt,
                                             outPutData[1][i].molecular_species,
                                             outPutData[1][i].canonical_smiles,
-                                            outPutData[1][i].moleculeType,
+                                            outPutData[1][i].molecule_type,
                                             outPutData[1][i].pref_name,
                                             outPutData[1][i].structure_type);
                         $scope.moleculesArray.push(molecule);
@@ -66,7 +66,7 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
-                $scope.moleculesArrayAux = $scope.moleculesArray; //for view
+                $scope.moleculesArrayAux = angular.copy($scope.moleculesArray); //for view
 
             });
         };
@@ -82,11 +82,11 @@
         * @return: none
         */
         this.modifyMolecule = function (index) {
-
+            console.log($scope.moleculesArrayAux[index]);
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 4
                 , action: 10020
-                , jsonData: JSON.stringify([angular.copy($scope.moleculesArray[index])])
+                , jsonData: JSON.stringify([angular.copy($scope.moleculesArrayAux[index])])
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
@@ -114,7 +114,7 @@
     @return none.
     */
     this.resetForm=function(){
-      $scope.modMoleculeForm.$setPristine();
+      $scope.moleculeManagement.$setPristine();
       $scope.molecule = null;
       //$scope.passControl = null;
       
@@ -163,8 +163,55 @@
           //console.log($scope.molecule.molecule_chembl_id);
         };
 
+        /**
+        * @name: removeMolecule
+        * @author: Jose Gimenez - Marvin Hernandez
+        * @version: 3.1
+        * @description: remove a molecule existing ni a data base. It comunicates with php using ajax
+        * @date: 17/05/2017
+        * @return: none
+        */
+        this.removeMolecule = function (index) {
+            var moleculeFound = new Molecule();
+            var moleculesArray = [];
 
-    /**
+            var rm = confirm("sure you want to delete the molecule?");
+            if (rm == true) {
+           
+              console.log(moleculesArray);
+              var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
+                  controllerType: 4
+                  , action: 10030
+                  , jsonData: JSON.stringify([angular.copy($scope.moleculesArrayAux[index])])
+
+              });
+
+              promise.then(function (outPutData) {
+                  if (outPutData[0] === true) {
+                      
+                      $scope.moleculesArrayAux.splice(index, 1);
+                      console.log($scope.moleculesArrayAux);
+                      $scope.moleculesArray = angular.copy($scope.moleculesArrayAux);
+
+                      alert("Molecule deleted correctly");
+                  }
+                  else {
+                      if (angular.isArray(outPutData[1])) {
+                          alert(outPutData[1]);
+                      }
+                      else {
+                          alert("There has been an error in the server, try later");
+                      }
+                  }
+              });
+
+            } else {
+
+            }
+        };
+
+
+        /**
         * @name: similaryMolecules
         * @author: Marvin Heranndez
         * @version: 3.1
