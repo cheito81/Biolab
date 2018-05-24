@@ -37,11 +37,13 @@
     //$scope.userType = $scope.user.getUserType();
     $scope.usersArray = new Array();
     $scope.passwordValid = true;
+
     $scope.nickValid = true;
     $scope.userImage;
     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
     $scope.format = $scope.formats[0];
     $scope.newUser = new User();
+    $scope.passControl;
 
     $scope.dateOptions = {
       dateDisabled: "",
@@ -110,6 +112,7 @@
                 if (outPutData[0] === true) {
                   alert("User inserted correctly");
                   $window.location.href = 'index.html';
+                  this.resetForm(); // reset form
                 } else {
                   if (angular.isArray(outPutData[1])) {
                     alert(outPutData[1]);
@@ -184,6 +187,48 @@
 
             });
         };
+
+        /**
+    @name checkPassword
+    @description Validates Dni 
+    @version 1.0
+    @date 17/04/2017
+    @author Jose Gimenez
+    @param Dni of user
+    @return true if valid false otherwise.
+    */
+    this.checkPassword=function(){
+      $scope.passwordValid = true;
+      $("#password2").addClass("ng-invalid");
+      $("#password2").removeClass("ng-valid");
+
+      if ($scope.passControl != undefined) {
+        
+        if ($scope.newUser.password === $scope.passControl) {
+          $("#password2").addClass("ng-valid");
+          $("#password2").removeClass("ng-invalid");
+          $scope.passwordValid = false;
+          
+        }
+      }
+      
+    };
+
+    /**
+    @name ResetForm
+    @description reset form and style 
+    @version 1.0
+    @date 24/04/2018
+    @author Jose Gimenez & marvin Hernandez
+    @param none
+    @return none.
+    */
+    this.resetForm=function(){
+      $scope.newUser = null;
+      $scope.passControl = null;
+      $scope.userManagement.$setPristine();
+      
+    };
 
 
      /**
