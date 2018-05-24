@@ -7,7 +7,6 @@
         <th>Surname</th>
         <th>Mail</th>
         <th>Nick</th>
-        <!--<td><a class="btn btn-primary" id="user" ng-click="$parent.showForm=2" style="color: #fff";><i class="fas fa-user-plus"></i> New user </a></td>-->
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   <i class="fas fa-user-plus"></i> New user
 </button></td>
@@ -66,13 +65,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form class="login2" id="userForm" name="userManagement" ng-submit="userCtrl.userManagement()" novalidate>
       <div class="modal-body">
         <user-register></user-register>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="reset" ng-click="userCtrl.resetForm()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="userManagement.$invalid || passwordValid || !nickValid" class="btn btn-success">Insert</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

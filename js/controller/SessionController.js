@@ -1,9 +1,9 @@
 /**
 * @name: SessionController
-* @author: Jose Gimenez & Hector Garcia
+* @author: Marvin Hernandez - Jose Gimenez
 * @version: 3.1
 * @description: it controlls all session functionalities
-* @date: 17/05/2017
+* @date: 15/05/2018
 */
 //Angular code
 (function () {
@@ -17,10 +17,10 @@
 
         /**
         * @name: sessionControl
-        * @author: Jose Gimenez & Hector Garcia
+        * @author: Jose Gimenez & Marvin Hernandez
         * @version: 3.1
         * @description: it establishes user session
-        * @date: 17/05/2017
+        * @date: 17/05/2018
         */
         this.sessionControl = function () {
             var promise;
@@ -52,7 +52,15 @@
                 });
                 promise.then(function (outPutData) {
                     if (outPutData[0] === true) {
-                        $scope.user.construct(outPutData[1].id, outPutData[1].name, outPutData[1].surname1, outPutData[1].nick, outPutData[1].password, outPutData[1].userType, outPutData[1].address, outPutData[1].city, outPutData[1].state, outPutData[1].telephone, outPutData[1].mail, outPutData[1].birthDate, outPutData[1].entryDate, outPutData[1].dropOutDate, outPutData[1].active, outPutData[1].image);
+                        $scope.user.construct(outPutData[1].id,
+                                            outPutData[1].name,
+                                            outPutData[1].surname1,
+                                            outPutData[1].nick,
+                                            outPutData[1].password,
+                                            outPutData[1].userType,
+                                            outPutData[1].mail,
+                                            outPutData[1].entryDate,
+                                            outPutData[1].image);
                         $scope.sessionOpened = true;
                         userConnected.user = $scope.user;
                         $scope.userType = $scope.user.getUserType();
@@ -77,10 +85,10 @@
 
         /**
         * @name: logOut
-        * @author: Jose Gimenez & Hector Garcia
+        * @author: Jose Gimenez & Marvin Hernandez
         * @version: 3.1
         * @description: it allow user to leave session.
-        * @date: 17/05/2017
+        * @date: 17/05/2018
         */
         this.logOut = function () {
             //Local session destroy

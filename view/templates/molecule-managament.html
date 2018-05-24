@@ -1,4 +1,4 @@
-<form name="modReviewsForm" novalidate>
+<form name="modMoleculeForm" novalidate>
   <table id="moleculeManagament" datatable="ng" class="table">
   <!--<table id="moleculeManagament" class="table">-->
     <thead>
@@ -22,30 +22,52 @@
           {{ moleculeObj.molecule_chembl_id }}
         </td>
         <td>
-          {{ moleculeObj.full_molformula }}
+          <div class="form-group">
+          <input type="text" class="form-control" id="full_molformula{{$index}}" ng-model="moleculeObj.full_molformula" required />
+          </div>
+          <div style="display: none;">{{ moleculeObj.full_molformula }}</div>
         </td>
         <td>
-          {{ moleculeObj.full_mwt }}
+          <div class="form-group">
+          <input type="text" class="form-control" id="full_mwt{{$index}}" ng-model="moleculeObj.full_mwt" required />
+          </div>
+          <div style="display: none;">{{ moleculeObj.full_mwt }}</div>
         </td>
         <td>
-          {{ moleculeObj.molecular_species }}
+          <div class="form-group">
+          <input type="text" class="form-control" id="molecular_species{{$index}}" ng-model="moleculeObj.molecular_species" required />
+          </div>
+          <div style="display: none;">{{ moleculeObj.molecular_species }}</div>
         </td>
         <td>
-          {{ moleculeObj.canonical_smiles }}
+          <div class="form-group">
+          <input type="text" class="form-control" id="canonical_smiles{{$index}}" ng-model="moleculeObj.canonical_smiles" required />
+          </div>
+          <div style="display: none;">{{ moleculeObj.canonical_smiles }}</div>
         </td>
         <td>
-          {{ moleculeObj.molecule_type }}
+          <div class="form-group">
+          <input type="text" class="form-control" id="molecule_type{{$index}}" ng-model="moleculeObj.molecule_type"  />
+          </div>
+          <div style="display: none;">{{ moleculeObj.molecule_type }}</div>
         </td>
         <td>
-          {{ moleculeObj.pref_name }}
+          <div class="form-group">
+          <input type="text" class="form-control" id="pref_name{{$index}}" ng-model="moleculeObj.pref_name"  />
+          </div>
+          <div style="display: none;">{{ moleculeObj.pref_name }}</div>
+          
         </td>
         <td>
-          {{ moleculeObj.structure_type }}
+          <div class="form-group">
+          <input type="text" class="form-control" id="structure_type{{$index}}" ng-model="moleculeObj.structure_type" required />
+          </div>
+          <div style="display: none;">{{ moleculeObj.structure_type }}</div>
         </td>
         <td>
-          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modReviewsForm.$invalid"><i class="fa fa-search"></i></button>
-          <button type="button" class="btn btn-success" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modReviewsForm.$invalid"><i class="fas fa-check"></i></button>
-          <button type="button" class="btn btn-danger" ng-click="moleculeCtrl.removeMolecule(value)" ng-disabled="modReviewsForm.$invalid"><i class="fas fa-trash-alt"></i></button>
+          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.similaryMolecules($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fa fa-search"></i></button>
+          <button type="button" class="btn btn-success" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fas fa-check"></i></button>
+          <button type="button" class="btn btn-danger" ng-click="moleculeCtrl.removeMolecule(moleculeObj)" ng-disabled="modMoleculeForm.$invalid"><i class="fas fa-trash-alt"></i></button>
         </td>
       </tr>
     </tbody>
@@ -69,7 +91,7 @@
           <molecules-entry></molecules-entry>
         </div>
         <div class="modal-footer">
-          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="reset" ng-click="moleculeCtrl.resetForm()" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Insert</button>
         </div>
       </form>

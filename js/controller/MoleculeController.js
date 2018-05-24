@@ -104,6 +104,24 @@
         };
 
 
+    /**
+    @name ResetForm
+    @description reset form and style 
+    @version 1.0
+    @date 24/04/2018
+    @author Jose Gimenez & Marvin Hernandez
+    @param none
+    @return none.
+    */
+    this.resetForm=function(){
+      $scope.modMoleculeForm.$setPristine();
+      $scope.molecule = null;
+      //$scope.passControl = null;
+      
+      
+    };
+
+
         /**
         * @name: MoleculesInsert
         * @author: Marvin Heranndez
@@ -142,7 +160,6 @@
                   }
                 }
               });
-          
           //console.log($scope.molecule.molecule_chembl_id);
         };
 
@@ -181,7 +198,6 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
-                //console.log($scope.moleculesArrayApi);
                 $scope.moleculesArrayAux = $scope.moleculesArrayApi // for print in the table
 
             });
@@ -190,7 +206,7 @@
   }]);
 
         
-
+  
   
 
   /**
