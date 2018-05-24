@@ -142,7 +142,6 @@
                   }
                 }
               });
-          
           //console.log($scope.molecule.molecule_chembl_id);
         };
 
@@ -181,7 +180,6 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
-                //console.log($scope.moleculesArrayApi);
                 $scope.moleculesArrayAux = $scope.moleculesArrayApi // for print in the table
 
             });

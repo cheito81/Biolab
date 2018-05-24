@@ -21,7 +21,15 @@
       if (sessionStorage.length > 0) {
         var objAux = JSON.parse(sessionStorage.getItem("userConnected"));
         if (!isNaN(objAux.id)) {
-          $scope.user.construct(objAux.id, objAux.name, objAux.surname1, objAux.nick, objAux.password, objAux.userType, objAux.address, objAux.city, objAux.state, objAux.telephone, objAux.mail, new Date(objAux.birthDate), objAux.entryDate, objAux.dropOutDate, objAux.active, objAux.image);
+          $scope.user.construct(objAux.id,
+                                objAux.name,
+                                objAux.surname1,
+                                objAux.nick,
+                                objAux.password,
+                                objAux.userType,
+                                objAux.mail,
+                                objAux.entryDate,
+                                objAux.image);
         }
       }
     }
@@ -86,7 +94,7 @@
               //File uploaded
               //$scope.user.setId(null);
 
-              $scope.newUser.setActive(1);
+              //$scope.newUser.setActive(1);
               $scope.newUser.setImage(outPutData[1][0]);
               $scope.newUser = angular.copy($scope.newUser);
 
@@ -153,7 +161,15 @@
                   console.log(outPutData);
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var user = new User();
-                        user.construct(outPutData[1][i].id, outPutData[1][i].name, outPutData[1][i].surname1, outPutData[1][i].nick, outPutData[1][i].password, outPutData[1][i].userType, outPutData[1][i].address, outPutData[1][i].city, outPutData[1][i].state, outPutData[1][i].telephone, outPutData[1][i].mail, outPutData[1][i].birthDate, outPutData[1][i].entryDate, outPutData[1][i].dropOutDate, outPutData[1][i].active, outPutData[1][i].image);
+                        user.construct(outPutData[1][i].id,
+                                      outPutData[1][i].name,
+                                      outPutData[1][i].surname1,
+                                      outPutData[1][i].nick,
+                                      outPutData[1][i].password,
+                                      outPutData[1][i].userType,
+                                      outPutData[1][i].mail,
+                                      outPutData[1][i].entryDate,
+                                      outPutData[1][i].image);
                         $scope.usersArray.push(user);
                     }
                 }
