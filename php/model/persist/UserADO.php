@@ -242,7 +242,8 @@ class UserADO implements EntityInterfaceADO {
 		}
 
 		$cons="update `".UserADO::$tableName."` set ".UserADO::$colNameName." = ?, ".UserADO::$colNameSurname1." = ?, ".UserADO::$colNameNick." = ?, ".UserADO::$colNamePassword." = ?,".UserADO::$colNameMail." = ?,".UserADO::$colNameEntryDate." = ?,".UserADO::$colNameImage." = ?,".UserADO::$colNameUserType." = ? where ".UserADO::$colNameId." = ?" ;
-		$arrayValues= [$user->getName(),$user->getSurname1(), $user->getNick(), $user->getPassword(), $user->getMail(), $user->getBirthDate(), $user->getEntryDate(), $user->getDropOutDate(), $user->getActive(), $user->getImage(),$user->getUserType(),$user->getId()];
+
+		$arrayValues= [$user->getName(),$user->getSurname1(), $user->getNick(), $user->getPassword(), $user->getMail(), $user->getEntryDate(), $user->getImage(),$user->getUserType(),$user->getId()];
 
 		$conn->execution($cons, $arrayValues);
 

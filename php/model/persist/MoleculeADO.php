@@ -171,7 +171,7 @@ class MoleculeADO implements EntityInterfaceADO {
 
     $molecule->setMolecule_chembl_id($molecule_chembl_id);
 
-    return $molecule->getId();
+    return $molecule->getMolecule_chembl_id();
   }
 
   /**

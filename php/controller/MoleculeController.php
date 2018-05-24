@@ -66,21 +66,18 @@ class MoleculeController implements ControllerInterface {
 
 	private function entryMolecule(){	//stripslashes elimina las barras invertidas agregadas
 
-		$moleculesArray = json_decode(stripslashes($this->getJsonData()));
-		var_dump($moleculesArray);
+		$moleculeObj = json_decode(stripslashes($this->getJsonData()));
+		$molecule = new Molecule();
+		$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type,$moleculeObj->pref_name,$moleculeObj->structure_type );
 
-		$idsArray = array();
-		foreach ($moleculesArray as $moleculeObj) {
-			$molecule = new Molecule();
-			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type, $moleculeObj->pref_name, $moleculeObj->structure_type);
-			$molecule->setMolecule_chembl_id(MoleculeADO::create($molecule));
-			$idsArray[]=$molecule->getMolecule_chembl_id();
-		}
 		$outPutData = array();
 		$outPutData[]= true;
-		//the senetnce returns de id's of the molecules inserted
-		$outPutData[]= $idsArray;
+		$molecule->setMolecule_chembl_id(MoleculeADO::create($molecule));
+
+		//the senetnce returns de id of the molecule inserted
+		$outPutData[]= array($molecule->jsonSerialize());
 		return $outPutData;
+
 	}
 
 	private function loadMolecule()	{
@@ -125,7 +122,7 @@ class MoleculeController implements ControllerInterface {
 		$outPutData[0]= true;
 		foreach($moleculesArray as $moleculeObj) {
 			$molecule = new Molecule();
-			$molecule->setAll($moleculeObj->id, $moleculeObj->userId, $moleculeObj->rate, $moleculeObj->opinion);
+			$molecule->setAll($moleculeObj->id, $moleculeObj->moleculeId, $moleculeObj->rate, $moleculeObj->opinion);
 			MoleculeADO::delete($molecule);
 		}
 		return $outPutData;
