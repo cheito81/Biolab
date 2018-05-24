@@ -123,6 +123,7 @@ class MoleculeADO implements EntityInterfaceADO {
     $cons = "select * from `".MoleculeADO::$tableName."`";
     return MoleculeADO::findByQuery( $cons, [] );
   }
+  
   /**
   * findAll()
   * It runs a query and returns an object array

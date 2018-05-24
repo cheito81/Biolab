@@ -5,16 +5,9 @@ function User() {
   this.surname1;
   this.nick;
   this.password;
-  this.address;
-  this.telephone;
   this.mail;
-  this.birthDate;
   this.entryDate;
-  this.dropOutDate;
-  this.active;
   this.image;
-  this.city;
-  this.state;
   this.userType;
 
 
