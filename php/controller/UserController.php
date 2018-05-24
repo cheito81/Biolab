@@ -74,7 +74,7 @@ class UserController implements ControllerInterface {
 	private function entryUser()	{
 		$userObj = json_decode(stripslashes($this->getJsonData()));
 		$user = new userClass();
-		$user->setAll(0, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->address, $userObj->city, $userObj->state, $userObj->telephone, $userObj->mail, $userObj->birthDate, date("Y-m-d h:i:sa"), "0000-00-00", $userObj->active, $userObj->image);
+		$user->setAll(0, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->mail, date("Y-m-d h:i:sa"), $userObj->image);
 		$outPutData = array();
 		$outPutData[]= true;
 		$user->setId(UserADO::create($user));
@@ -91,7 +91,7 @@ class UserController implements ControllerInterface {
 		$outPutData[]= true;
 		foreach($usersArray as $userObj)	{
 		    $user = new userClass();
-			$user->setAll($userObj->id, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->address, $userObj->city, $userObj->state, $userObj->telephone, $userObj->mail, $userObj->birthDate, $userObj->entryDate,$userObj->dropOutDate, $userObj->active, $userObj->image);
+			$user->setAll($userObj->id, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->mail, date("Y-m-d h:i:sa"), $userObj->image);
 		    UserADO::update($user);
 		}
 		return $outPutData;
@@ -103,7 +103,7 @@ class UserController implements ControllerInterface {
 		$outPutData[]= true;
 		foreach($usersArray as $userObj)	{
 			$user = new Application();
-			$user->setAll($userObj->id, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->address, $userObj->city, $userObj->state, $userObj->telephone, $userObj->mail, $userObj->birthDate, $userObj->entryDate,$userObj->dropOutDate, $userObj->active, $userObj->image);
+			$user->setAll($userObj->id, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->mail, date("Y-m-d h:i:sa"), $userObj->image);
 			UserADO::delete($user);
 		}
 		return $outPutData;
@@ -147,11 +147,13 @@ class UserController implements ControllerInterface {
 		}
 		return 	$outPutData;
 	}
+
     private function logout()	{
         session_destroy();
         $outPutData[]= true;
         return $outPutData;
     }
+    
     	private function loadUsers()	{
 		$outPutData = array();
 		$usersArray = UserADO::findAll();

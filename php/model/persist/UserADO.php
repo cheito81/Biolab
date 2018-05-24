@@ -18,15 +18,8 @@ class UserADO implements EntityInterfaceADO {
     private static $colNameNick = "nick";
     private static $colNamePassword = "password";
     private static $colNameUserType = "userType";
-    private static $colNameAddress = "address";
-    private static $colNameCity = "city";
-    private static $colNameState = "state";
-    private static $colNameTelephone = "telephone";
     private static $colNameMail = "mail";
-    private static $colNameBirthDate = "birthDate";
     private static $colNameEntryDate = "entryDate";
-    private static $colNameDropOutDate = "dropOutDate";
-    private static $colNameActive = "active";
     private static $colNameImage = "image";
 
     //---Databese management section-----------------------
@@ -65,15 +58,8 @@ class UserADO implements EntityInterfaceADO {
         $nick = $res[ UserADO::$colNameNick ];
         $password = $res[ UserADO::$colNamePassword ];
         $userType = $res[ UserADO::$colNameUserType ];
-        $address = $res[ UserADO::$colNameAddress ];
-        $city = $res[ UserADO::$colNameCity];
-        $state = $res[ UserADO::$colNameState ];
-        $telephone = $res[ UserADO::$colNameTelephone ];
         $mail = $res[ UserADO::$colNameMail ];
-        $birthDate = $res[ UserADO::$colNameBirthDate ];
         $entryDate = $res[ UserADO::$colNameEntryDate ];
-        $dropOutDate = $res[ UserADO::$colNameDropOutDate ];
-        $active = $res[ UserADO::$colNameActive ];
         $image = $res[ UserADO::$colNameImage ];
 
        	//Object construction
@@ -84,15 +70,8 @@ class UserADO implements EntityInterfaceADO {
 		$entity->setNick($nick);
 		$entity->setPassword($password);
         $entity->setUserType($userType);
-		$entity->setAddress($address);
-        $entity->setCity($city);
-        $entity->setState($state);
-		$entity->setTelephone($telephone);
 		$entity->setMail($mail);
-		$entity->setBirthDate($birthDate);
 		$entity->setEntryDate($entryDate);
-		$entity->setDropOutDate($dropOutDate);
-		$entity->setActive($active);
 		$entity->setImage($image);
 
 		return $entity;
@@ -217,7 +196,7 @@ class UserADO implements EntityInterfaceADO {
 		}
 
 		$cons="insert into ".UserADO::$tableName." (`name`,`surname1`,`nick`,`password`, `userType`,`address`, `city`, `state`,`telephone`,`mail`,`birthDate`,`entryDate`,`dropOutDate`,`active`,`image`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		$arrayValues= [$user->getName(),$user->getSurname1(), $user->getNick(), $user->getPassword(), $user->getUserType(),$user->getAddress(), $user->getCity(), $user->getState(), $user->getTelephone(), $user->getMail(), $user->getBirthDate(), $user->getEntryDate(), $user->getDropOutDate(), $user->getActive(), $user->getImage()];
+		$arrayValues= [$user->getName(),$user->getSurname1(), $user->getNick(), $user->getPassword(), $user->getUserType(), $user->getMail(), $user->getEntryDate(), $user->getImage()];
 
 		$id = $conn->executionInsert($cons, $arrayValues);
 
@@ -262,8 +241,8 @@ class UserADO implements EntityInterfaceADO {
 			die();
 		}
 
-		$cons="update `".UserADO::$tableName."` set ".UserADO::$colNameName." = ?, ".UserADO::$colNameSurname1." = ?, ".UserADO::$colNameNick." = ?, ".UserADO::$colNamePassword." = ?, ".UserADO::$colNameAddress." = ?, ".UserADO::$colNameTelephone." = ?, ".UserADO::$colNameMail." = ?, ".UserADO::$colNameBirthDate." = ?, ".UserADO::$colNameEntryDate." = ?, ".UserADO::$colNameDropOutDate." = ?, ".UserADO::$colNameActive." = ?, ".UserADO::$colNameImage." = ? where ".UserADO::$colNameId." = ?" ;
-		$arrayValues= [$user->getName(),$user->getSurname1(), $user->getNick(), $user->getPassword(), $user->getAddress(), $user->getTelephone(), $user->getMail(), $user->getBirthDate(), $user->getEntryDate(), $user->getDropOutDate(), $user->getActive(), $user->getImage(),$user->getId()];
+		$cons="update `".UserADO::$tableName."` set ".UserADO::$colNameName." = ?, ".UserADO::$colNameSurname1." = ?, ".UserADO::$colNameNick." = ?, ".UserADO::$colNamePassword." = ?,".UserADO::$colNameMail." = ?,".UserADO::$colNameEntryDate." = ?,".UserADO::$colNameImage." = ?,".UserADO::$colNameUserType." = ? where ".UserADO::$colNameId." = ?" ;
+		$arrayValues= [$user->getName(),$user->getSurname1(), $user->getNick(), $user->getPassword(), $user->getMail(), $user->getBirthDate(), $user->getEntryDate(), $user->getDropOutDate(), $user->getActive(), $user->getImage(),$user->getUserType(),$user->getId()];
 
 		$conn->execution($cons, $arrayValues);
 
