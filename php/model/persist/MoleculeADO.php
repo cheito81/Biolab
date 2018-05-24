@@ -191,7 +191,7 @@ class MoleculeADO implements EntityInterfaceADO {
 
 
     $cons="delete from `".MoleculeADO::$tableName."` where ".MoleculeADO::$colNameId." = ?";
-    $arrayValues= [$molecule->getId()];
+    $arrayValues= [$molecule->getMolecule_chembl_id()];
 
     $conn->execution($cons, $arrayValues);
   }
