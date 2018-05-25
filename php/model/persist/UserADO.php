@@ -195,7 +195,8 @@ class UserADO implements EntityInterfaceADO {
 			die();
 		}
 
-		$cons="insert into ".UserADO::$tableName." (`name`,`surname1`,`nick`,`password`, `userType`,`address`, `city`, `state`,`telephone`,`mail`,`birthDate`,`entryDate`,`dropOutDate`,`active`,`image`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$cons="insert into ".UserADO::$tableName." (`name`,`surname1`,`nick`,`password`, `userType`,`mail`,`entryDate`,`image`) values (?, ?, ?, ?, ?, ?, ?, ?)";
+
 		$arrayValues= [$user->getName(),$user->getSurname1(), $user->getNick(), $user->getPassword(), $user->getUserType(), $user->getMail(), $user->getEntryDate(), $user->getImage()];
 
 		$id = $conn->executionInsert($cons, $arrayValues);

@@ -81,6 +81,7 @@ class UserController implements ControllerInterface {
 
 		//the senetnce returns de id of the user inserted
 		$outPutData[]= array($user->getAll());
+
 		return $outPutData;
 	}
 

@@ -9,7 +9,7 @@
 (function() {
   angular.module('infoTechApp').controller("UserController", ['$http', '$scope', '$window', '$cookies', 'accessService', 'userConnected', '$filter', function($http, $scope, $window, $cookies, accessService, userConnected,$filter) {
     //scope variables
-    $scope.userOption = 0;
+    $scope.userOption = 1;
      //Pagination variables
         $scope.pageSize = 4;
         $scope.currentPage = 1;
@@ -94,6 +94,7 @@
             }
           }).success(function(outPutData) {
             if (outPutData[0] === true) {
+              console.log($scope.newUser);
               //File uploaded
               //$scope.user.setId(null);
 
@@ -102,6 +103,7 @@
               $scope.newUser = angular.copy($scope.newUser);
 
               //Server conenction to verify user's data
+              console.log($scope.newUser);
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 0,
                 action: 10010,
