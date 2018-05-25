@@ -274,6 +274,23 @@
   });
 
   /**
+   * @name: MoleculeShow
+   * @author: Marvin Hernandez
+   * @version: 1.1
+   * @description: that directove controlls "molecule-show" template
+   * @date: 17/05/2018
+   * @return none
+   */
+  angular.module('infoTechApp').directive("moleculeShow", function() {
+    return {
+      restrict: 'E',
+      templateUrl: "view/templates/molecule-show.html",
+      controller: function() {},
+      controllerAs: 'moleculeShow'
+    };
+  });
+
+  /**
    * @name: MoleculeEntryForm
    * @author: Marvin Hernandez
    * @version: 3.1

@@ -2,8 +2,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS biolab;
-USE biolab;
+CREATE DATABASE IF NOT EXISTS dawbio1805;
+USE dawbio1805;
 --
 -- Database: `biolab`
 --
@@ -62,8 +62,8 @@ INSERT INTO `molecules` (`molecule_chembl_id`, `full_molformula`, `full_mwt`, `m
 ('CHEMBL82327', 'C17H19FN2O2', 302.34, 'NEUTRAL', 'C[C@@H (NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N', 'Small molecule', '', 'MOL');
 
 
-CREATE USER IF NOT EXISTS 'biolab'@'localhost' IDENTIFIED BY 'biolab';
-GRANT ALL ON biolab.* TO 'biolab'@'localhost';
-GRANT ALL ON biolab TO 'biolab'@'localhost';
-GRANT CREATE ON biolab TO 'biolab'@'localhost';
+CREATE USER IF NOT EXISTS 'dawbio1805'@'localhost' IDENTIFIED BY 'Ew5kaer6';
+GRANT ALL ON dawbio1805.* TO 'dawbio1805'@'localhost';
+GRANT ALL ON dawbio1805 TO 'dawbio1805'@'localhost';
+GRANT CREATE ON dawbio1805 TO 'dawbio1805'@'localhost';
 FLUSH PRIVILEGES;
