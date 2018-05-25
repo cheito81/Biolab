@@ -41,7 +41,8 @@
         </td>
         <td>
           <div class="form-group">
-          <input type="text" class="form-control" id="canonical_smiles{{$index}}" ng-model="moleculeObj.canonical_smiles" required />
+          <textarea class="form-control" id="canonical_smiles{{$index}}" ng-model="moleculeObj.canonical_smiles" rows="3" required></textarea>
+          <!--<input type="text" class="form-control" id="canonical_smiles{{$index}}" ng-model="moleculeObj.canonical_smiles" required />-->
           </div>
           <div style="display: none;">{{ moleculeObj.canonical_smiles }}</div>
         </td>
@@ -65,7 +66,7 @@
           <div style="display: none;">{{ moleculeObj.structure_type }}</div>
         </td>
         <td>
-          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.similaryMolecules($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fa fa-search"></i></button>
+          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.similaryMolecules($index);$parent.showForm=5" ng-disabled="modMoleculeForm.$invalid"><i class="fa fa-search"></i></button>
           <button type="button" class="btn btn-success" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fas fa-check"></i></button>
           <button type="button" class="btn btn-danger" ng-click="moleculeCtrl.removeMolecule($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fas fa-trash-alt"></i></button>
         </td>
@@ -100,3 +101,4 @@
     </div>
   </div>
 </div>
+

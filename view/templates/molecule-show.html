@@ -1,0 +1,44 @@
+  <table id="moleculeShow" datatable="ng" class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Formula</th>
+        <th>MWT</th>
+        <th>Species</th>
+        <th>Smiles</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Structure Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="moleculeObj in moleculesArrayApi">
+        <td>
+          {{ moleculeObj.molecule_chembl_id }}
+        </td>
+        <td>
+          {{ moleculeObj.full_molformula }}
+        </td>
+        <td>
+          {{ moleculeObj.full_mwt }}
+        </td>
+        <td>
+          {{ moleculeObj.molecular_species }}
+        </td>
+        <td>
+          {{ moleculeObj.canonical_smiles }}
+        </td>
+        <td>
+          {{ moleculeObj.molecule_type }}
+        </td>
+        <td>
+          {{ moleculeObj.pref_name }}
+          
+        </td>
+        <td>
+          {{ moleculeObj.structure_type }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-info" ng-click="userAction=1;$parent.showForm=0">Back</button>

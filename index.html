@@ -51,29 +51,68 @@
   <br class="hidden-xs" />
 
   <div class="container well" id="login" ng-controller="UserController as userCtrl">
-    <fieldset ng-show="userOption==0">
-      <legend>Login</legend>
-      <form class="login" name="userConnection" ng-submit="userCtrl.connection()" novalidate>
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="user.nick" placeholder="User" value="user1" required />
-          <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required />
-        </div>
-        <div class="form-group row">
-          <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <input class="btn btn-success btn-default btn-primary btn-block" type="submit"  ng-disabled="userConnection.$invalid" value="Login" />
-          </label>
 
-          <label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <input class="btn btn-default btn-primary btn-block" type="button" value="Register" ng-click="userOption=1">
-          </label>
-        </div>
-      </form>
-    </fieldset>
-    <div ng-show="userOption==1">
-      <user-register></user-register>
+  <div class="container">
+        <form class="form-horizontal" role="form" name="userConnection" ng-submit="userCtrl.connection()" novalidate>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <h2>Please Login</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group has-danger">
+                        <label class="sr-only" for="email">Username</label>
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                            <input type="text" name="username" class="form-control" id="username" ng-model="user.nick"
+                                   placeholder="Username" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========= ERROS =======-->
+                <!--<div class="col-md-3">
+                    <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <i class="fa fa-close"></i> Example error message
+                        </span>
+                    </div>
+                </div>-->
+                <!-- ======= END ERROS ====-->
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="sr-only" for="password">Password</label>
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                            <input type="password" name="password" class="form-control" id="password" ng-model="user.password"
+                                   placeholder="Password" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                        <!-- Put password error message here -->    
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" style="padding-top: 1rem">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success" ng-disabled="userConnection.$invalid" value="Login"><i class="fas fa-sign-in-alt"></i> Login</button>
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
-
+</div> <!-- End of session -->
 </body>
 
 </html>

@@ -44,6 +44,7 @@
     $scope.format = $scope.formats[0];
     $scope.newUser = new User();
     $scope.passControl;
+    //$scope.newUser.userType = 0;
 
     $scope.dateOptions = {
       dateDisabled: "",
