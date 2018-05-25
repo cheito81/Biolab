@@ -73,16 +73,15 @@ class UserController implements ControllerInterface {
 
 	private function entryUser()	{
 		$userObj = json_decode(stripslashes($this->getJsonData()));
-		echo "<p>objeto pasado".var_dump($userObj)."</p>";
 		$user = new userClass();
 		$user->setAll(0, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->mail, date("Y-m-d h:i:sa"), $userObj->image);
 		$outPutData = array();
 		$outPutData[]= true;
-		echo "<p>objeto para insert".var_dump($user)."</p>";
 		$user->setId(UserADO::create($user));
 
 		//the senetnce returns de id of the user inserted
 		$outPutData[]= array($user->getAll());
+
 		return $outPutData;
 	}
 
