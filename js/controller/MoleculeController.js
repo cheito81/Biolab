@@ -178,7 +178,6 @@
             var rm = confirm("sure you want to delete the molecule?");
             if (rm == true) {
            
-              console.log(moleculesArray);
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                   controllerType: 4
                   , action: 10030
