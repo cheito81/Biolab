@@ -22,9 +22,9 @@ class DBConnect{
    private function setConnection(){
 
       $this->server='localhost';
-      $this->dataBase='dawbio1805';
-      $this->user='dawbio1805';
-      $this->password='Ew5kaer6';
+      $this->dataBase='dawbio1805';//dawbio1805
+      $this->user='dawbio'; //dawbio1805
+      $this->password='dawbio'; //Ew5kaer6
    }
 
    /*Evitem el clonatge de l'obejcte: Patró Singleton*/

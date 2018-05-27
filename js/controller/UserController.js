@@ -14,7 +14,7 @@
         $scope.pageSize = 4;
         $scope.currentPage = 1;
     //$scope.userType;
-    $scope.user = new User();
+    $scope.user = new User(); 
     if (typeof(Storage) == "undefined") {
       alert("Your browser is not compatible with sessions, upgrade your browser");
     } else {
@@ -94,7 +94,6 @@
             }
           }).success(function(outPutData) {
             if (outPutData[0] === true) {
-              console.log($scope.newUser);
               //File uploaded
               //$scope.user.setId(null);
 
@@ -103,7 +102,6 @@
               $scope.newUser = angular.copy($scope.newUser);
 
               //Server conenction to verify user's data
-              console.log($scope.newUser);
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 0,
                 action: 10010,

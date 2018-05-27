@@ -244,7 +244,7 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
-                $scope.moleculesArrayAux = $scope.moleculesArrayApi // for print in the table
+                //$scope.moleculesArrayAux = $scope.moleculesArrayApi // for print in the table
 
             });
         };
