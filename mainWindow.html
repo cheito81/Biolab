@@ -37,8 +37,6 @@
  <link rel="stylesheet" type="text/css" href="vendors/dataTable/css/angular-datatables.css" />
 
   <!-- Model-->
-  <script src="js/model/Aplication.js" type="text/javascript" xml:space="preserve"></script>
-  <script src="js/model/Review.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/model/User.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/model/Molecule.js" type="text/javascript" xml:space="preserve"></script>
 
@@ -46,9 +44,6 @@
   <script src="js/app.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/SessionController.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/UserController.js" type="text/javascript" xml:space="preserve"></script>
-  <script src="js/controller/ApplicationController.js" type="text/javascript" xml:space="preserve"></script>
-  <script src="js/controller/ReviewController.js" type="text/javascript" xml:space="preserve"></script>
-  <script src="js/controller/StatisticsController.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/StatisticsController.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/MoleculeController.js" type="text/javascript" xml:space="preserve"></script>
 
@@ -72,8 +67,8 @@
           <i class="fa fa-database"></i> Bio Tools
         </a>
         <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <!--<a class="dropdown-item" href="#" ng-click="showForm=5" >New molecule</a>-->
           <a class="dropdown-item" href="#" ng-click="showForm=4" >Molecules managament</a>
+          <a class="dropdown-item" href="#" ng-click="showForm=6" >Molecule statistics</a>
         </div>
       </li>
       
@@ -98,14 +93,16 @@
     <!--<div class="container" ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.similaryMolecules()">-->
     <div ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
       <molecule-managament></molecule-managament>
+      <div ng-show="showForm==5">
+        <molecule-show></molecule-show>
+      </div>
     </div>
-
     
-      <molecule-show></molecule-show>
-    
-    <!--<div ng-controller="StatisticsController as statisticsCtrl">
-      <a class="btn btn-default btn-primary col-xs-12 col-sm-6 col-md-6 col-lg-6"  href="#" ng-click="statisticsCtrl.generateBoxPlotMolecularWeight()">Generate BoxPlot Molecular weight</a>
-    </div>-->
+    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" >
+    <!--<div ng-show="showForm==6">-->
+      <!--<a class="btn btn-default btn-primary col-xs-12 col-sm-6 col-md-6 col-lg-6"  href="#" ng-click="statisticsCtrl.generateBoxPlotMolecularWeight()">Generate BoxPlot Molecular weight</a>-->
+      <molecule-statistics></molecule-statistics>
+    </div>
 
 
 </body>

@@ -27,6 +27,26 @@
 			});
 		}
 	}]);
+
+
+	/**
+   * @name: moleculeStatistics
+   * @author: Marvin Hernandez
+   * @version: 1.1
+   * @description: that directove controlls "molecule-statistics" template
+   * @date: 27/05/2018
+   * @return none
+   */
+  angular.module('infoTechApp').directive("moleculeStatistics", function() {
+    return {
+      restrict: 'E',
+      templateUrl: "view/templates/molecule-statistics.html",
+      controller: function() {},
+      controllerAs: 'moleculeStatistics'
+    };
+  });
+
+
 })();
 
 
