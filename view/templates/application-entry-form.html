@@ -1,0 +1,84 @@
+!DOCTYPE html>
+<form class="" name="entryApplicationsForm" ng-submit="entryApplicationsForm.$valid && appCtrl.entryApplication()" ng-init="positionArray[0]" novalidate>
+  <h3>Employment application</h3>
+  <br/>
+  <fieldset class="container well">
+    <input type="text" name="userId" ng-model="application.userId" value="user.id" hidden="hidden">
+    <div class="row">
+      <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-control-label" for="">Which position are you applaying for? *</label>
+      <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 no-padding">
+        <select ng-model="application.position" class="form-control" required>
+          <option ng-repeat="position in positionArray">{{position}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-control-label" for="">When can you start? *</label>
+      <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 input-group no-padding">
+        <input type="text" class="form-control datepicker" id="startDate" uib-datepicker-popup="yyyy-mm-dd" datepicker-popup="yyyy-MM-dd" is-open="startDate.opened" datepicker-options="dateOptions" alt-input-formats="altInputFormats" close-text="Close" ng-required="true" ng-model="application.startDate" readonly my-date required/> <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openStartDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-control-label" for="">Port folio Web Site</label>
+      <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 no-padding">
+        <input class="form-control" type="url" name="url" ng-model="application.url"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-control-label" for="">Salary requirements *</label>
+      <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 no-padding">
+        <input class="form-control" type="text" name="salary" ng-model="application.salary" ng-pattern="/^0*([1-9]\d{3,}\d)$/" required/>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-control-label" for="">Hobbies</label>
+      <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 no-padding">
+        <div class="" ng-repeat="hobbie in hobbiesArray"> <span>
+          <input
+          type="checkbox"
+          name="Hobbies"
+          id="Hobbies{{$index}}" ng-click="appCtrl.hobbiesMng($index)">
+          {{hobbie}}
+        </span> </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <br/>
+      <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-control-label" for="">Are you willing to realocate *</label>
+      <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 no-padding">
+        <input ng-model="application.relocate" type="radio" name="realocate" value="1" required>Yes
+        <input ng-model="application.relocate" type="radio" name="realocate" value="0" required>No
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-control-label" for="">Write in a few words rhe reason you are a suitable candidate for the applied vacancy</label>
+      <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 no-padding">
+        <textarea ng-model="application.reasons" class="form-control" name="name" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="row"> <br/> </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <button class="btn btn-success" ng-disabled="entryApplicationsForm.$invalid">Submit</button>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <button class="btn btn-primary" type="button" ng-click="userAction=1;$parent.showForm=0">Back</button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+<!--
+<span class="container-fluid text-justify" ng-show="entryApplicationsForm.$submitted || entryApplicationsForm.salary.$touched">
+<span ng-show="entryApplicationsForm.salary.$error.required"></span>Salary is required
+</span>
+-->

@@ -9,7 +9,7 @@
 (function() {
   angular.module('infoTechApp').controller("UserController", ['$http', '$scope', '$window', '$cookies', 'accessService', 'userConnected', '$filter', function($http, $scope, $window, $cookies, accessService, userConnected,$filter) {
     //scope variables
-    $scope.userOption = 0;
+    $scope.userOption = 1;
      //Pagination variables
         $scope.pageSize = 4;
         $scope.currentPage = 1;
