@@ -73,7 +73,7 @@ class DBConnect{
 	  return $this->stmt;//retorna la consulta select o el número de files afectades
    }
 
-   //si necessitem altres coses, com per exemple, saber el darrer id insertat, l'hem de codificar a banda
+   
    public function executionInsert($sql,$vector){
 	   if($this->link !=null){
 		   $this->stmt=$this->link->prepare($sql);

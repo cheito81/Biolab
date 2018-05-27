@@ -1,6 +1,5 @@
 <?php
 	require_once "UserController.php";
-	require_once "ApplicationController.php";
 	require_once "FileController.php";
 	require_once "MoleculeController.php";
 
