@@ -1,4 +1,14 @@
-  <table id="moleculeShow" datatable="ng" class="table">
+<br>
+<br>
+<div class="container container-fluid">
+<div class="alert alert-primary text-center" role="alert">
+  Similar molecules for: <strong>{{moleculeId}}</strong>
+</div>
+</div>
+
+
+
+ <table id="moleculeShow" datatable="ng" dt-options="dtOptions" class="table export-table">
     <thead>
       <tr>
         <th>ID</th>
@@ -41,4 +51,5 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-info" ng-click="userAction=1;$parent.showForm=0">Back</button>
+  <button type="button" class="btn btn-info" ng-click="moleculeOption=0">Back</button>
+

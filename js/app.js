@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 (function(){
 
-  var infoTechApp = angular.module('infoTechApp', ['ng-currency', 'ui.bootstrap', 'ngCookies','datatables']);
+  var infoTechApp = angular.module('infoTechApp', ['ng-currency', 'ui.bootstrap', 'ngCookies','datatables','datatables.buttons']);
 
   infoTechApp.factory('userConnected', function(){
       // I know this doesn't work, but what will?
