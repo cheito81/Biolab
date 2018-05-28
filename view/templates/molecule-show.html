@@ -1,12 +1,14 @@
 <br>
 <br>
 <div class="container container-fluid">
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-primary text-center" role="alert">
   Similar molecules for: <strong>{{moleculeId}}</strong>
 </div>
 </div>
 
- <table id="moleculeShow" datatable="ng" dt-options="vm.dtOptions" class="table">
+
+
+ <table id="moleculeShow" datatable="ng" dt-options="dtOptions" class="table export-table">
     <thead>
       <tr>
         <th>ID</th>
@@ -50,3 +52,4 @@
     </tbody>
   </table>
   <button type="button" class="btn btn-info" ng-click="moleculeOption=0">Back</button>
+

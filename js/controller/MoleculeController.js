@@ -22,6 +22,8 @@
     $scope.moleculeId = "";
 
     $scope.moleculeOption = 0;
+
+
   
 
         /**
@@ -207,6 +209,8 @@
             }
         };
 
+    //this.exportData = function ()
+
 
         /**
         * @name: similaryMolecules
@@ -251,6 +255,8 @@
             });
             //$scope.showForm = 4;
             //
+
+            
         };
 
   }]);

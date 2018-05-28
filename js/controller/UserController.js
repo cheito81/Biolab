@@ -216,6 +216,29 @@
     };
 
     /**
+    @name checkNick
+    @description Validates Nick 
+    @version 1.0
+    @date 17/04/2017
+    @author Marvin Hernandez
+    @param Dni of user
+    @return true if valid false otherwise.
+    */
+    this.checkNick=function(){
+      $scope.nickValid = true;
+      //console.log("check");
+      
+      for (var i = 0; i <= $scope.usersArray.length; i++) {
+        if ($scope.usersArray[i].nick === $scope.newUser.nick) {
+          $scope.nickValid = false;
+          console.log($scope.nickValid);
+        }
+        console.log($scope.usersArray[i]);
+      }
+      
+    };
+
+    /**
     @name ResetForm
     @description reset form and style 
     @version 1.0
