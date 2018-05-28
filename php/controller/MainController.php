@@ -1,4 +1,11 @@
 <?php
+/**
+ * controls all actions of controllers
+ * @name MainController.php
+ * @author José Giménez, Marvin Hernandez
+ * @version 1.1
+ * @date 2018-5-18
+ */
 	require_once "UserController.php";
 	require_once "FileController.php";
 	require_once "MoleculeController.php";

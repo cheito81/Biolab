@@ -106,7 +106,7 @@ class MoleculeADO implements EntityInterfaceADO {
   */
   public static function findById( $molecule ) {
     $cons = "select * from `".MoleculeADO::$tableName."` where ".MoleculeADO::$colNameId." = ?";
-    $arrayValues = [$molecule->getId()];
+    $arrayValues = [$molecule->getMolecule_chembl_id()];
 
     return MoleculeADO::findByQuery( $cons, $arrayValues );
   }

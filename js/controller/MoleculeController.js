@@ -151,7 +151,7 @@
               promise.then(function(outPutData) {
                 if (outPutData[0] === true) {
                   alert("Molecule inserted correctly");
-                  $window.location.href = 'index.html';
+                  $window.location.href = 'mainWindow.html';
                 } else {
                   if (angular.isArray(outPutData[1])) {
                     alert(outPutData[1]);

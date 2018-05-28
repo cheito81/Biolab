@@ -1,8 +1,11 @@
 <?php
 /**
- * toDoClass class
- * it controls the hole server part of the application
-*/
+ * controls all actions of users
+ * @name UserController.php
+ * @author José Giménez, Marvin Hernandez
+ * @version 1.2
+ * @date 2018-5-18
+ */
 require_once "ControllerInterface.php";
 require_once "../model/User.php";
 require_once "../model/persist/UserADO.php";
