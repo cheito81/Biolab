@@ -15,12 +15,12 @@ inputData$jsonData
   generatedFiles<-c()
 
   setwd("/var/www/html/RScripts/SQLAccess")
-	source("SQLAccess.R")
+  source("SQLAccess.R")
 
   switch (as.character(inputData$action),
           "10000" = {
 
-            mydb <- openDB("biolab", "biolab", "biolab", "localhost")
+            mydb <- openDB("dawbio1805", "Ew5kaer6", "dawbio1805", "localhost")
             allMolecules <- execSQLQuery(mydb, "select * from molecules")
 
             setwd("/var/www/html/BioLabTechnology/statisticsFiles/boxPlots")
@@ -62,7 +62,7 @@ inputData$jsonData
           }
   )
 
-	outPutData <- c(1, file1, file2, statistic)
+  outPutData <- c(1, file1, file2, statistic)
 
-	sendBin (toJSON(outPutData))
+  sendBin (toJSON(outPutData))
 }

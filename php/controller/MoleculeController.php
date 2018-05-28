@@ -1,8 +1,11 @@
 <?php
 /**
-* toDoClass class
-* it controls the hole server part of the application
-*/
+ * controls all actions of molecules
+ * @name MoleculeController.php
+ * @author José Giménez, Marvin Hernandez
+ * @version 1.1
+ * @date 2018-5-18
+ */
 require_once "ControllerInterface.php";
 require_once "../model/Molecule.php";
 require_once "../model/persist/MoleculeADO.php";
@@ -64,18 +67,38 @@ class MoleculeController implements ControllerInterface {
 		return $outPutData;
 	}
 
-	private function entryMolecule(){	//stripslashes elimina las barras invertidas agregadas
+	private function entryMolecule(){
 
 		$moleculeObj = json_decode(stripslashes($this->getJsonData()));
-		$molecule = new Molecule();
-		$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type,$moleculeObj->pref_name,$moleculeObj->structure_type );
-
 		$outPutData = array();
-		$outPutData[]= true;
-		$molecule->setMolecule_chembl_id(MoleculeADO::create($molecule));
+		$moleculeEmptyfields = ItemFormVAlidation::moleculeEmptyfields($moleculeObj);
+		$moleculeId = new Molecule();
+		$moleculeId->setMolecule_chembl_id($moleculeObj->molecule_chembl_id);
+		$moleculeIdValid = MoleculeADO::findById($moleculeId);
+				if($moleculeEmptyfields!=null || $moleculeIdValid != null)	{
+										$outPutData[]= false;
+										
+										if ($moleculeEmptyfields!=null) {
+											$errors = array();
+											$errors[]=$moleculeEmptyfields;
+											$outPutData[] = $errors;
+										}
+										if ($moleculeIdValid != null) {
+											$errors = array();
+											$errors[]="Molecule id already exist";
+											$outPutData[] = $errors;
+										}
+										
+				}
+				else { 
+							$outPutData[]= true;
+							$molecule = new Molecule();
+		                    $molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type,$moleculeObj->pref_name,$moleculeObj->structure_type );
 
-		//the senetnce returns de id of the molecule inserted
-		$outPutData[]= array($molecule->jsonSerialize());
+								$molecule->setMolecule_chembl_id(MoleculeADO::create($molecule));
+								
+							$outPutData[]= array($molecule->jsonSerialize());
+				}
 		return $outPutData;
 
 	}
