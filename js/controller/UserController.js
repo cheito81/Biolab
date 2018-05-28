@@ -227,15 +227,21 @@
     this.checkNick=function(){
       $scope.nickValid = true;
       //console.log("check");
-      
-      for (var i = 0; i <= $scope.usersArray.length; i++) {
-        if ($scope.usersArray[i].nick === $scope.newUser.nick) {
+      $("#userNick").addClass("ng-valid");
+      $("#userNick").removeClass("ng-invalid");
+      var userFound = new User();
+
+      for (var i = 0; i < $scope.usersArray.length; i++) {
+        userFound = $scope.usersArray[i]; 
+        if (userFound.nick === $scope.newUser.nick) {
+          $("#userNick").addClass("ng-invalid");
+          $("#userNick").removeClass("ng-valid");
           $scope.nickValid = false;
-          console.log($scope.nickValid);
+          break;
+          //console.log($scope.nickValid);
         }
-        console.log($scope.usersArray[i]);
+        //console.log($scope.usersArray[i]);
       }
-      
     };
 
     /**
@@ -250,6 +256,7 @@
     this.resetForm=function(){
       $scope.newUser = null;
       $scope.passControl = null;
+      $scope.nickValid = true;
       $scope.userManagement.$setPristine();
       
     };
