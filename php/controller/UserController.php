@@ -6,6 +6,7 @@
 require_once "ControllerInterface.php";
 require_once "../model/User.php";
 require_once "../model/persist/UserADO.php";
+require_once "../util/ItemFormVAlidation.php";
 
 
 class UserController implements ControllerInterface {
@@ -44,7 +45,7 @@ class UserController implements ControllerInterface {
 			case 10020:
 				if (isset($_SESSION['connectedUser']))	{
 					$outPutData = $this->modifyUser();
-				}
+				  }
 				break;
 			case 10030:
 				$outPutData = $this->sessionControl();
@@ -73,15 +74,35 @@ class UserController implements ControllerInterface {
 
 	private function entryUser()	{
 		$userObj = json_decode(stripslashes($this->getJsonData()));
-		$user = new userClass();
-		$user->setAll(0, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->mail, date("Y-m-d h:i:sa"), $userObj->image);
 		$outPutData = array();
-		$outPutData[]= true;
-		$user->setId(UserADO::create($user));
-
-		//the senetnce returns de id of the user inserted
-		$outPutData[]= array($user->getAll());
-
+		$userEmptyfields = ItemFormVAlidation::userEmptyfields($userObj);
+		$userNick = new userClass();
+		$userNick->setNick($userObj->nick);
+		$nickValid = UserADO::findByNick($userNick);
+		
+				if($userEmptyfields!=null || $nickValid != null)	{
+							$outPutData[]= false;
+							
+							if ($userEmptyfields!=null) {
+								$errors = array();
+								$errors[]=$userEmptyfields;
+								$outPutData[] = $errors;
+							}
+							if ($nickValid != null) {
+								$errors = array();
+								$errors[]="User nick already exist";
+								$outPutData[] = $errors;
+							}
+							
+				}
+				else { 
+							$outPutData[]= true;
+							$user = new userClass();
+								$user->setAll(0, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->mail, date("Y-m-d h:i:sa"), $userObj->image);
+								$user->setId(UserADO::create($user));
+								
+							$outPutData[] = $user->getAll();
+				}
 		return $outPutData;
 	}
 
@@ -97,13 +118,14 @@ class UserController implements ControllerInterface {
 		}
 		return $outPutData;
 	}
+
 	private function deleteUser()	{
 		//Films modification
 		$usersArray = json_decode(stripslashes($this->getJsonData()));
 		$outPutData = array();
 		$outPutData[]= true;
 		foreach($usersArray as $userObj)	{
-			$user = new Application();
+			$user = new userClass();
 			$user->setAll($userObj->id, $userObj->name, $userObj->surname1, $userObj->nick, $userObj->password, $userObj->userType, $userObj->mail, date("Y-m-d h:i:sa"), $userObj->image);
 			UserADO::delete($user);
 		}

@@ -118,7 +118,7 @@
                   if (angular.isArray(outPutData[1])) {
                     alert(outPutData[1]);
                   } else {
-                    alert("There has been an error in the server, try later (1)");
+                    alert("There has been an error in the server, try later (1) user not inserted");
                   }
                 }
               });
@@ -162,7 +162,7 @@
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
-                  console.log(outPutData);
+                  
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var user = new User();
                         user.construct(outPutData[1][i].id,
@@ -273,6 +273,7 @@
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
                     alert("User modified correctly");
+                    alert(outPutData[0]);
                 }
                 else {
                     if (angular.isArray(outPutData[1])) {
