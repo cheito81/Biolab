@@ -116,9 +116,8 @@
 
     </div>
     
-    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" >
-    <!--<div ng-show="showForm==6">-->
-      <!--<a class="btn btn-default btn-primary col-xs-12 col-sm-6 col-md-6 col-lg-6"  href="#" ng-click="statisticsCtrl.generateBoxPlotMolecularWeight()">Generate BoxPlot Molecular weight</a>-->
+    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
+    hola
       <molecule-statistics></molecule-statistics>
     </div>
 
