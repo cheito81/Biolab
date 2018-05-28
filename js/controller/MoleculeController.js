@@ -7,7 +7,7 @@
  */
 //Angular code
 (function() {
-  angular.module('infoTechApp').controller("MoleculeController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function($http, $scope, $window, $cookies, accessService, $filter) {
+  angular.module('infoTechApp').controller("MoleculeController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function($http, $scope, $window, $cookies, accessService, $filter,DTOptionsBuilder, DTColumnBuilder,DTColumnDefBuilder) {
     
     //scope variables
     //$scope.moleculeOption = 0;
@@ -17,12 +17,13 @@
     $scope.moleculesArray = new Array();    //Array from my database.
     $scope.moleculesArrayApi = new Array(); //Array from API (similarity).
     $scope.moleculesArrayAux = new Array(); //array for view molecules in the table.
-     
-    //$scope.format = $scope.formats[0];
     
     $scope.newMolecule = new Molecule();
+    $scope.moleculeId = "";
 
-    
+    $scope.moleculeOption = 0;
+  
+
         /**
         * @name: loadMolecules
         * @author: Marvin Hernandez
@@ -116,9 +117,6 @@
     this.resetForm=function(){
       $scope.moleculeManagement.$setPristine();
       $scope.molecule = null;
-      //$scope.passControl = null;
-      
-      
     };
 
 
@@ -218,14 +216,17 @@
         * @date: 17/05/2018
         * @return: none
         */
-        this.similaryMolecules = function () {
+        this.similaryMolecules = function (index) {
 
             $scope.moleculesArrayApi = [];
+            $scope.moleculeOption = 1;
+            $smile = $scope.moleculesArrayAux[index].canonical_smiles; //smile
+            $scope.moleculeId = $scope.moleculesArrayAux[index].molecule_chembl_id; //ID
 
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 4
                 , action: 10040
-                , jsonData: "C[C@H](NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N"
+                , jsonData: $smile
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
@@ -235,6 +236,8 @@
                         molecule.construct(outPutData[1][i].molecule_chembl_id, outPutData[1][i].full_molformula, outPutData[1][i].full_mwt, outPutData[1][i].molecular_species, outPutData[1][i].canonical_smiles, outPutData[1][i].molecule_type, outPutData[1][i].pref_name, outPutData[1][i].structure_type);
                         $scope.moleculesArrayApi.push(molecule);
                     }
+
+
                 }
                 else {
                     if (angular.isArray(outPutData[1])) {
@@ -244,9 +247,10 @@
                         alert("There has been an error in the server, try later");
                     }
                 }
-                //$scope.moleculesArrayAux = $scope.moleculesArrayApi // for print in the table
 
             });
+            //$scope.showForm = 4;
+            //
         };
 
   }]);
@@ -277,7 +281,7 @@
    * @author: Marvin Hernandez
    * @version: 1.1
    * @description: that directove controlls "molecule-show" template
-   * @date: 17/05/2018
+   * @date: 22/05/2018
    * @return none
    */
   angular.module('infoTechApp').directive("moleculeShow", function() {
@@ -292,7 +296,7 @@
   /**
    * @name: MoleculeEntryForm
    * @author: Marvin Hernandez
-   * @version: 3.1
+   * @version: 1.0
    * @description: that directove controlls "molecule-entry" template
    * @date: 17/05/2018
    * @return none

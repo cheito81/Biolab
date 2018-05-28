@@ -112,7 +112,7 @@
               promise.then(function(outPutData) {
                 if (outPutData[0] === true) {
                   alert("User inserted correctly");
-                  $window.location.href = 'index.html';
+                  $window.location.href = 'mainWindow.html';
                   this.resetForm(); // reset form
                 } else {
                   if (angular.isArray(outPutData[1])) {

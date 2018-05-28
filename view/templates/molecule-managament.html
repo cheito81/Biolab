@@ -68,7 +68,7 @@
           <div ng-show="userType==1">{{ moleculeObj.structure_type }}</div>
         </td>
         <td>
-          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.similaryMolecules($index);$parent.showForm=5" ng-disabled="modMoleculeForm.$invalid"><i class="fa fa-search"></i></button>
+          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.similaryMolecules($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fa fa-search"></i></button>
           
           
           <button ng-show="userType==0" type="button" class="btn btn-success" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fas fa-check"></i></button>
