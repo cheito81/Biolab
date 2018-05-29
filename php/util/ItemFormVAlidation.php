@@ -4,14 +4,14 @@ require_once '../model/User.php';
 require_once '../model/Molecule.php';
 
 /**
- * Description of ItemFormValidation
+ * ItemFormValidation
  * Management of item's form
  * @author Jse Gimenez, Marvin Hernandez
  */
 class ItemFormValidation {
 
  /**
-     * Description: check if the fields are empty
+     * check if the fields are empty
      * @Param $userObj user object of json
      * @return null if there is no empty field, string if there is any empty field
     */
@@ -44,7 +44,7 @@ public static function userEmptyfields ($userObj){
 }
 
  /**
-     * Description: check if the fields are empty
+     * check if the fields are empty
      * @Param $userObj user object of json
      * @return null if there is no empty field, string if there is any empty field
     */
@@ -76,6 +76,21 @@ public static function moleculeEmptyfields ($moleculeObj){
         $empties .= "empty structure_type\n";
     }
     return $empties;
+}
+
+/**
+ *
+ * Valida un email usando filter_var y comprobar las DNS. 
+ *  
+ * @param    string  $str la dirección a validar
+ * @return   boolean true si es correcto o false en caso contrario
+ *
+ */
+function is_valid_email($str)
+{
+  
+  $matches = null;
+  return (1 === preg_match('/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/', $str, $matches));
 }
  
 

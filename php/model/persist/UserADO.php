@@ -113,34 +113,6 @@ class UserADO implements EntityInterfaceADO {
     }
 
     /**
-	 * findlikeName()
-	 * It runs a query and returns an object array
-	 * @param name
-	 * @return object with the query results
-    */
-    public static function findlikeName( $user ) {
-		$cons = "select * from `".UserADO::$tableName."` where ".UserADO::$colNameName." like ?";
-		$arrayValues = ["%".$user->getName()."%"];
-
-		return UserADO::findByQuery($cons,$arrayValues);
-    }
-
-
-
-    /**
-	* findByName()
-	 * It runs a query and returns an object array
-	 * @param name
-	 * @return object with the query results
-    */
-    public static function findByName( $user ) {
-		$cons = "select * from `".UserADO::$tableName."` where ".UserADO::$colNameName." = ?";
-		$arrayValues = [$user->getName()];
-
-		return UserADO::findByQuery($cons,$arrayValues);
-    }
-
-    /**
 	* findByNick()
 	 * It runs a query and returns an object array
 	 * @param name
@@ -184,6 +156,8 @@ class UserADO implements EntityInterfaceADO {
     /**
 	 * create()
 	 * insert a new row into the database
+	 * @param object
+	 * @return object with id
     */
     public function create($user) {
 		//Connection with the database
@@ -209,6 +183,7 @@ class UserADO implements EntityInterfaceADO {
     /**
 	 * delete()
 	 * it deletes a row from the database
+	 * @param object user
     */
     public function delete($user) {
 		//Connection with the database
@@ -231,6 +206,7 @@ class UserADO implements EntityInterfaceADO {
     /**
 	 * update()
 	 * it updates a row of the database
+	 * @param object user
     */
 	 public function update($user) {
 		//Connection with the database

@@ -1,7 +1,7 @@
 <?php
 /** 
 * name moleculeDAO
-* autor  Marvin Hernandez
+* autor  José Giménez, Marvin Hernandez
 * version 3.0
 */
 require_once "BDconnect.php";
@@ -132,21 +132,6 @@ class MoleculeADO implements EntityInterfaceADO {
   */
   public static function findAllSimilary($smile) {
     return file_get_contents('https://www.ebi.ac.uk/chembl/api/data/similarity/'.$smile.'/80?format=json');
-  }
-
-
-
-  /**
-  * findLikeMoleculeWeight()
-  * It runs a query and returns an object array
-  * @param molecule_chembl_id
-  * @return object with the query results
-  */
-  public static function findLikeMoleculeWeight( $molecule ) {
-    $cons = "select * from `".MoleculeADO::$tableName."` where ".MoleculeADO::$colNameFull_mwt." like ?";
-    $arrayValues = ["%".$molecule->getMoleculeWeight()."%"];
-
-    return MoleculeADO::findByQuery( $cons, $arrayValues );
   }
 
   /**

@@ -81,9 +81,10 @@ class UserController implements ControllerInterface {
 		$userEmptyfields = ItemFormVAlidation::userEmptyfields($userObj);
 		$userNick = new userClass();
 		$userNick->setNick($userObj->nick);
-		$nickValid = UserADO::findByNick($userNick);
+		$nickValid = UserADO::findByNick($userNick); 
+		$validMail = ItemFormVAlidation::is_valid_email($userObj->mail);
 		
-				if($userEmptyfields!=null || $nickValid != null)	{
+				if($userEmptyfields!=null || $nickValid != null || !$validMail)	{
 							$outPutData[]= false;
 							
 							if ($userEmptyfields!=null) {
@@ -94,6 +95,11 @@ class UserController implements ControllerInterface {
 							if ($nickValid != null) {
 								$errors = array();
 								$errors[]="User nick already exist";
+								$outPutData[] = $errors;
+							}
+							if (!$validMail) {
+								$errors = array();
+								$errors[]="User mail not valid";
 								$outPutData[] = $errors;
 							}
 							
