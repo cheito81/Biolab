@@ -8,7 +8,7 @@
         <th>MWT</th>
         <th>Species</th>
         <th>Smiles</th>
-        <th>Type</th>
+        <th>qed_weighted</th>
         <th>Name</th>
         <th>Structure Type</th>
         <td >
@@ -50,9 +50,9 @@
         </td>
         <td>
           <div ng-show="userType==0" class="form-group">
-          <input type="text" class="form-control" id="molecule_type{{$index}}" ng-model="moleculeObj.molecule_type"  />
+          <input type="text" class="form-control" id="qed_weighted{{$index}}" ng-model="moleculeObj.qed_weighted"  />
           </div>
-          <div ng-show="userType==1">{{ moleculeObj.molecule_type }}</div>
+          <div ng-show="userType==1">{{ moleculeObj.qed_weighted }}</div>
         </td>
         <td>
           <div ng-show="userType==0" class="form-group">

@@ -54,7 +54,7 @@
                                             outPutData[1][i].full_mwt,
                                             outPutData[1][i].molecular_species,
                                             outPutData[1][i].canonical_smiles,
-                                            outPutData[1][i].molecule_type,
+                                            outPutData[1][i].qed_weighted,
                                             outPutData[1][i].pref_name,
                                             outPutData[1][i].structure_type);
                         $scope.moleculesArray.push(molecule);
@@ -237,7 +237,7 @@
                   console.log(outPutData);
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var molecule = new Molecule();
-                        molecule.construct(outPutData[1][i].molecule_chembl_id, outPutData[1][i].full_molformula, outPutData[1][i].full_mwt, outPutData[1][i].molecular_species, outPutData[1][i].canonical_smiles, outPutData[1][i].molecule_type, outPutData[1][i].pref_name, outPutData[1][i].structure_type);
+                        molecule.construct(outPutData[1][i].molecule_chembl_id, outPutData[1][i].full_molformula, outPutData[1][i].full_mwt, outPutData[1][i].molecular_species, outPutData[1][i].canonical_smiles, outPutData[1][i].qed_weighted, outPutData[1][i].pref_name, outPutData[1][i].structure_type);
                         $scope.moleculesArrayApi.push(molecule);
                     }
 

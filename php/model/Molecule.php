@@ -7,7 +7,7 @@ class Molecule implements EntityInterface, JsonSerializable{
     private $full_mwt;
     private $molecular_species;
     private $canonical_smiles;
-    private $molecule_type;
+    private $qed_weighted;
     private $pref_name;
     private $structure_type;
   
@@ -21,7 +21,7 @@ class Molecule implements EntityInterface, JsonSerializable{
     public function getMolecular_species() {return $this->molecular_species;}
 
     public function getCanonical_smiles() { return $this->canonical_smiles; }
-    public function getMolecule_type() {return $this->molecule_type;}
+    public function getQed_weighted() {return $this->qed_weighted;}
     public function getPref_name() {return $this->pref_name;}
     public function getStructure_type() {return $this->structure_type;}
    
@@ -44,8 +44,8 @@ class Molecule implements EntityInterface, JsonSerializable{
         $this->canonical_smiles = $canonical_smiles;
     }
 
-    public function setMolecule_type($molecule_type) {
-        $this->molecule_type = $molecule_type;
+    public function setQed_weighted($qed_weighted) {
+        $this->qed_weighted = $qed_weighted;
     }
 
     public function setPref_name($pref_name) {
@@ -65,20 +65,20 @@ class Molecule implements EntityInterface, JsonSerializable{
         $data["full_mwt"] = $this->full_mwt;
         $data["molecular_species"] = $this->molecular_species;
         $data["canonical_smiles"] = $this->canonical_smiles;
-        $data["molecule_type"] = $this->molecule_type;
+        $data["qed_weighted"] = $this->qed_weighted;
         $data["pref_name"] = $this->pref_name;
         $data["structure_type"] = $this->structure_type;
   
         return $data;
     }
 
-    public function setAll($molecule_chembl_id,$full_molformula,$full_mwt,$molecular_species,$canonical_smiles,$molecule_type,$pref_name,$structure_type){
+    public function setAll($molecule_chembl_id,$full_molformula,$full_mwt,$molecular_species,$canonical_smiles,$qed_weighted,$pref_name,$structure_type){
         $this->setMolecule_chembl_id($molecule_chembl_id);
         $this->setFull_molformula($full_molformula);
         $this->setFull_mwt($full_mwt);
         $this->setMolecular_species($molecular_species);
         $this->setCanonical_smiles($canonical_smiles);
-        $this->setMolecule_type($molecule_type);
+        $this->setQed_weighted($qed_weighted);
         $this->setPref_name($pref_name);
         $this->setStructure_type($structure_type);
 
