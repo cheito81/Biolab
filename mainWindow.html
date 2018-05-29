@@ -27,8 +27,6 @@
   <script src="vendors/dataTable/plugins/buttons/buttons.html5.min.js"></script>
   <script src="vendors/dataTable/plugins/buttons/buttons.print.min.js"></script>
 
-  
-
   <!-- jQuery Cookies management-->
   <script src="vendors/jquery/jquery-cookie/jquery.cookie.js" type="text/javascript" xml:space="preserve"></script>
 
@@ -81,7 +79,7 @@
           <i class="fa fa-database"></i> Bio Tools
         </a>
         <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" ng-click="showForm=4;moleculeOption=0" >Molecules managament</a>
+          <a class="dropdown-item" href="#" ng-click="showForm=4" >Molecules managament</a>
           <a class="dropdown-item" href="#" ng-click="showForm=6" >Molecule statistics</a>
         </div>
       </li>
@@ -98,13 +96,12 @@
   </nav>
 
     
-    <div ng-controller="UserController as userCtrl" class="container pt-5" ng-show="showForm==3" ng-init="userCtrl.loadUsers()">
+    <div ng-controller="UserController as userCtrl" class="container pt-5" ng-show="showForm==3" ng-init="userCtrl.loadUsers()">    
       <user-managament></user-managament>
     </div>
     <div ng-show="showForm==2">
       <user-register></user-register>
     </div>
-    <!--<div class="container" ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.similaryMolecules()">-->
     <div ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
 
       <div ng-show="moleculeOption==0">
@@ -116,9 +113,8 @@
 
     </div>
     
-    <div ng-show="showForm == 6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
-      <h1>hola</h1>
-      <!--<molecule-statistics></molecule-statistics>-->
+    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
+      <molecule-statistics></molecule-statistics>
     </div>
     
 

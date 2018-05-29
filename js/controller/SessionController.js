@@ -13,6 +13,7 @@
         $scope.userAction = 0;
         $scope.userType;
         $scope.showForm = 0;
+        $scope.moleculeOption = 0;
         $scope.sessionOpened = false;
 
         /**
