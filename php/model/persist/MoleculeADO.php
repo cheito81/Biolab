@@ -1,7 +1,7 @@
 <?php
 /** 
 * name moleculeDAO
-* autor  Marvin Hernandez
+* autor  José Giménez, Marvin Hernandez
 * version 3.0
 */
 require_once "BDconnect.php";

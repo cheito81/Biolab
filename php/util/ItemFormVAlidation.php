@@ -4,14 +4,14 @@ require_once '../model/User.php';
 require_once '../model/Molecule.php';
 
 /**
- * Description of ItemFormValidation
+ * ItemFormValidation
  * Management of item's form
  * @author Jse Gimenez, Marvin Hernandez
  */
 class ItemFormValidation {
 
  /**
-     * Description: check if the fields are empty
+     * check if the fields are empty
      * @Param $userObj user object of json
      * @return null if there is no empty field, string if there is any empty field
     */
@@ -44,7 +44,7 @@ public static function userEmptyfields ($userObj){
 }
 
  /**
-     * Description: check if the fields are empty
+     * check if the fields are empty
      * @Param $userObj user object of json
      * @return null if there is no empty field, string if there is any empty field
     */

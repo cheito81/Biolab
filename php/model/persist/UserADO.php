@@ -156,6 +156,8 @@ class UserADO implements EntityInterfaceADO {
     /**
 	 * create()
 	 * insert a new row into the database
+	 * @param object
+	 * @return object with id
     */
     public function create($user) {
 		//Connection with the database
@@ -181,6 +183,7 @@ class UserADO implements EntityInterfaceADO {
     /**
 	 * delete()
 	 * it deletes a row from the database
+	 * @param object user
     */
     public function delete($user) {
 		//Connection with the database
@@ -203,6 +206,7 @@ class UserADO implements EntityInterfaceADO {
     /**
 	 * update()
 	 * it updates a row of the database
+	 * @param object user
     */
 	 public function update($user) {
 		//Connection with the database
