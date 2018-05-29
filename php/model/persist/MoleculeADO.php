@@ -17,7 +17,7 @@ class MoleculeADO implements EntityInterfaceADO {
   private static $colNameFull_mwt = "full_mwt";
   private static $colNameMolecular_species = "molecular_species";
   private static $colNameCanonical_smiles = "canonical_smiles";
-  private static $colNameMolecule_type= "molecule_type";
+  private static $colNameQed_weighted= "qed_weighted";
   private static $colNamePref_name = "pref_name";
   private static $colNameStructure_type = "structure_type";
  
@@ -58,7 +58,7 @@ class MoleculeADO implements EntityInterfaceADO {
     $full_mwt = $res[ MoleculeADO::$colNameFull_mwt ];
     $molecular_species = $res[ MoleculeADO::$colNameMolecular_species ];
     $canonical_smiles = $res[ MoleculeADO::$colNameCanonical_smiles ];
-    $molecule_type = $res[ MoleculeADO::$colNameMolecule_type ];
+    $qed_weighted = $res[ MoleculeADO::$colNameQed_weighted ];
     $pref_name = $res[ MoleculeADO::$colNamePref_name ];
     $structure_type = $res[ MoleculeADO::$colNameStructure_type];
     //$userEmail = /*$res[ MoleculeADO::$colNameUserEmail ]*/ "prueba@prueba.com";
@@ -70,7 +70,7 @@ class MoleculeADO implements EntityInterfaceADO {
     $entity->setFull_mwt($full_mwt);
     $entity->setMolecular_species($molecular_species);
     $entity->setCanonical_smiles($canonical_smiles);
-    $entity->setMolecule_type($molecule_type);
+    $entity->setQed_weighted($qed_weighted);
     $entity->setPref_name($pref_name);
     $entity->setStructure_type($structure_type);
     return $entity;
@@ -149,8 +149,8 @@ class MoleculeADO implements EntityInterfaceADO {
       die();
     }
 
-    $cons="insert into ".MoleculeADO::$tableName." (`molecule_chembl_id`,`full_molformula`,`full_mwt`,`molecular_species`,`canonical_smiles`,`molecule_type`,`pref_name`,`structure_type`) values (?, ?, ?, ?, ?, ?, ?, ?)" ;
-    $arrayValues= [$molecule->getMolecule_chembl_id(),$molecule->getFull_molformula(), $molecule->getFull_mwt(), $molecule->getMolecular_species(), $molecule->getCanonical_smiles(),$molecule->getMolecule_type(), $molecule->getPref_name(), $molecule->getStructure_type()];
+    $cons="insert into ".MoleculeADO::$tableName." (`molecule_chembl_id`,`full_molformula`,`full_mwt`,`molecular_species`,`canonical_smiles`,`qed_weighted`,`pref_name`,`structure_type`) values (?, ?, ?, ?, ?, ?, ?, ?)" ;
+    $arrayValues= [$molecule->getMolecule_chembl_id(),$molecule->getFull_molformula(), $molecule->getFull_mwt(), $molecule->getMolecular_species(), $molecule->getCanonical_smiles(),$molecule->getQed_weighted(), $molecule->getPref_name(), $molecule->getStructure_type()];
 
     $molecule_chembl_id = $conn->executionInsert($cons, $arrayValues);
 
@@ -196,9 +196,9 @@ class MoleculeADO implements EntityInterfaceADO {
       die();
     }
 
-    $cons="update `".MoleculeADO::$tableName."` set ".MoleculeADO::$colNameFull_molformula." = ?, ".MoleculeADO::$colNameFull_mwt." = ?,".MoleculeADO::$colNameMolecular_species." = ?,".MoleculeADO::$colNameCanonical_smiles." = ?,".MoleculeADO::$colNameMolecule_type." = ?,".MoleculeADO::$colNamePref_name." = ?,".MoleculeADO::$colNameStructure_type." = ?  where ".MoleculeADO::$colNameId." = ?";
+    $cons="update `".MoleculeADO::$tableName."` set ".MoleculeADO::$colNameFull_molformula." = ?, ".MoleculeADO::$colNameFull_mwt." = ?,".MoleculeADO::$colNameMolecular_species." = ?,".MoleculeADO::$colNameCanonical_smiles." = ?,".MoleculeADO::$colNameQed_weighted." = ?,".MoleculeADO::$colNamePref_name." = ?,".MoleculeADO::$colNameStructure_type." = ?  where ".MoleculeADO::$colNameId." = ?";
 
-    $arrayValues= [$molecule->getFull_molformula(), $molecule->getFull_mwt(), $molecule->getMolecular_species(), $molecule->getCanonical_smiles(),$molecule->getMolecule_type(), $molecule->getPref_name(), $molecule->getStructure_type(),$molecule->getMolecule_chembl_id()];
+    $arrayValues= [$molecule->getFull_molformula(), $molecule->getFull_mwt(), $molecule->getMolecular_species(), $molecule->getCanonical_smiles(),$molecule->getQed_weighted(), $molecule->getPref_name(), $molecule->getStructure_type(),$molecule->getMolecule_chembl_id()];
 
 
     $conn->execution($cons, $arrayValues);
