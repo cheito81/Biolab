@@ -113,34 +113,6 @@ class UserADO implements EntityInterfaceADO {
     }
 
     /**
-	 * findlikeName()
-	 * It runs a query and returns an object array
-	 * @param name
-	 * @return object with the query results
-    */
-    public static function findlikeName( $user ) {
-		$cons = "select * from `".UserADO::$tableName."` where ".UserADO::$colNameName." like ?";
-		$arrayValues = ["%".$user->getName()."%"];
-
-		return UserADO::findByQuery($cons,$arrayValues);
-    }
-
-
-
-    /**
-	* findByName()
-	 * It runs a query and returns an object array
-	 * @param name
-	 * @return object with the query results
-    */
-    public static function findByName( $user ) {
-		$cons = "select * from `".UserADO::$tableName."` where ".UserADO::$colNameName." = ?";
-		$arrayValues = [$user->getName()];
-
-		return UserADO::findByQuery($cons,$arrayValues);
-    }
-
-    /**
 	* findByNick()
 	 * It runs a query and returns an object array
 	 * @param name

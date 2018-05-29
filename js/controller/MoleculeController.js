@@ -40,7 +40,7 @@
             $scope.moleculesArrayAux = [];
 
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
-                controllerType: 4
+                controllerType: 1
                 , action: 10010
                 , jsonData: JSON.stringify("")
             });
@@ -87,7 +87,7 @@
         this.modifyMolecule = function (index) {
             console.log($scope.moleculesArrayAux[index]);
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
-                controllerType: 4
+                controllerType: 1
                 , action: 10020
                 , jsonData: JSON.stringify([angular.copy($scope.moleculesArrayAux[index])])
             });
@@ -142,7 +142,7 @@
               console.log($scope.molecule);
 
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
-                controllerType: 4,
+                controllerType: 1,
                 action: 10000,
                 jsonData: JSON.stringify($scope.molecule)
 
@@ -179,7 +179,7 @@
             if (rm == true) {
            
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
-                  controllerType: 4
+                  controllerType: 1
                   , action: 10030
                   , jsonData: JSON.stringify([angular.copy($scope.moleculesArrayAux[index])])
 
@@ -228,7 +228,7 @@
             $scope.moleculeId = $scope.moleculesArrayAux[index].molecule_chembl_id; //ID
 
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
-                controllerType: 4
+                controllerType: 1
                 , action: 10040
                 , jsonData: $smile
             });

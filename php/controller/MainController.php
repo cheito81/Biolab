@@ -34,23 +34,13 @@
 				break;
 			case 1:
 					if (isset($_SESSION['connectedUser']))	{
-						$applicationController = new ApplicationController( $_REQUEST['action'], $_REQUEST['jsonData'] );
-						$outPutData = $applicationController->doAction();
+						$moleculeController = new MoleculeController( $_REQUEST['action'], $_REQUEST['jsonData'] );
+					     $outPutData = $moleculeController->doAction();
 					}
 					break;
 			case 2:
 					$fileController = new FileController( $_REQUEST['action'], $_REQUEST['jsonData'] );
 					$outPutData = $fileController->doAction();
-					break;
-			case 3:
-					if (isset($_SESSION['connectedUser']))	{
-							$reviewController = new ReviewController( $_REQUEST['action'], $_REQUEST['jsonData'] );
-							$outPutData = $reviewController->doAction();
-					}
-					break;
-			case 4:
-					$moleculeController = new MoleculeController( $_REQUEST['action'], $_REQUEST['jsonData'] );
-					$outPutData = $moleculeController->doAction();
 					break;
 			default:
 				$errors = array();
