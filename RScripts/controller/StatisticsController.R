@@ -23,7 +23,7 @@ inputData$jsonData
             mydb <- openDB("dawbio1805", "Ew5kaer6", "dawbio1805", "localhost")
             allMolecules <- execSQLQuery(mydb, "select * from molecules")
 
-            setwd("/var/www/html/statisticsFiles/boxPlots")
+            setwd("/var/www/html/BioLabTechnology/statisticsFiles/boxPlots")
 
             png("boxPlotMolecularWeight.png")
             boxplot(allMolecules$full_mwt,main="Box plot molecular weight")

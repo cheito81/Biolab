@@ -58,8 +58,8 @@
   <script src="js/app.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/SessionController.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/UserController.js" type="text/javascript" xml:space="preserve"></script>
-  <script src="js/controller/StatisticsController.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/MoleculeController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controller/StatisticsController.js" type="text/javascript" xml:space="preserve"></script>
 
 
 </head>
@@ -81,7 +81,7 @@
           <i class="fa fa-database"></i> Bio Tools
         </a>
         <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" ng-click="showForm=4" >Molecules managament</a>
+          <a class="dropdown-item" href="#" ng-click="showForm=4;moleculeOption=0" >Molecules managament</a>
           <a class="dropdown-item" href="#" ng-click="showForm=6" >Molecule statistics</a>
         </div>
       </li>
@@ -116,12 +116,11 @@
 
     </div>
     
-    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
-    hola
+    <div ng-show="showForm == 6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
+      <h1>hola</h1>
       <!--<molecule-statistics></molecule-statistics>-->
     </div>
-
-
+    
 
 </body>
 

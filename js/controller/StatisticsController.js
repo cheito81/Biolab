@@ -9,7 +9,7 @@
 		$scope.showForm=0;
 
 		this.generateBoxPlotMolecularWeight = function ()	{
-			var promise = accessService.getData("RScripts/controller/StatisticsController.R", true, "POST", "", {controllerType:0,action:10000, jsonData:JSON.stringify("")});
+			var promise = accessService.getData("../RScripts/controller/StatisticsController.R", true, "POST", "", {controllerType:0,action:10000, jsonData:JSON.stringify("")});
 
 			promise.then(function (outPutData) {
 				if(outPutData[0]== true)	{
@@ -27,6 +27,8 @@
 				}
 			});
 		}
+
+		
 	}]);
 
 
