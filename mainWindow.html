@@ -30,8 +30,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 
-  
-
   <!-- jQuery Cookies management-->
   <script src="vendors/jquery/jquery-cookie/jquery.cookie.js" type="text/javascript" xml:space="preserve"></script>
 
@@ -61,8 +59,8 @@
   <script src="js/app.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/SessionController.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/UserController.js" type="text/javascript" xml:space="preserve"></script>
-  <script src="js/controller/StatisticsController.js" type="text/javascript" xml:space="preserve"></script>
   <script src="js/controller/MoleculeController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controller/StatisticsController.js" type="text/javascript" xml:space="preserve"></script>
 
 
 </head>
@@ -101,31 +99,27 @@
   </nav>
 
     
-    <div ng-controller="UserController as userCtrl" class="container pt-5" ng-show="showForm==3" ng-init="userCtrl.loadUsers()">
+    <div ng-controller="UserController as userCtrl" class="container pt-5" ng-show="showForm==3" ng-init="userCtrl.loadUsers()">    
       <user-managament></user-managament>
     </div>
     <div ng-show="showForm==2">
       <user-register></user-register>
     </div>
-    <!--<div class="container" ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.similaryMolecules()">-->
-    <div ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
+    <div  ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
 
-      <div ng-show="moleculeOption==0">
+      <div ng-show="$parent.showForm==4">
         <molecule-managament></molecule-managament>
       </div>
-      <div ng-show="moleculeOption==1">
+      <div ng-show="$parent.showForm==5">
         <molecule-show></molecule-show>
       </div>
 
     </div>
     
-    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight();">
-    holaaaaaaaaaaaaaaaa
-    <!--<div ng-show="showForm==6">-->
-      <!--<a class="btn btn-default btn-primary col-xs-12 col-sm-6 col-md-6 col-lg-6"  href="#" ng-click="statisticsCtrl.generateBoxPlotMolecularWeight()">Generate BoxPlot Molecular weight</a>-->
-      <!--<molecule-statistics></molecule-statistics>-->
-    </div> 
-
+    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
+      <molecule-statistics></molecule-statistics>
+    </div>
+    
 
 </body>
 

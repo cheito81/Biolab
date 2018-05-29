@@ -30,7 +30,7 @@
       "full_mwt": "341.75",
       "hba": 4,
       "hba_lipinski": 6,
-      "hbd": 1,
+      "hbd": 1, +
       "hbd_lipinski": 1,
       "heavy_atoms": 24,
       "molecular_species": "ACID",
@@ -40,9 +40,9 @@
       "num_lipinski_ro5_violations": 0,
       "num_ro5_violations": 0,
       "psa": "78.84",
-      "qed_weighted": "0.87",
+      "qed_weighted": "0.87", + investigar
       "ro3_pass": "N",
-      "rtb": 3
+      "rtb": 3 
     },
     "molecule_structures": {
       "canonical_smiles": "Cc1cc(ccc1C(=O)c2ccccc2Cl)N3N=CC(=O)NC3=O",
@@ -57,7 +57,7 @@
     "polymer_flag": false,
     "pref_name": null,
     "prodrug": "-1",
-    "structure_type": "MOL",
+    "structure_type": "MOL", -quitar
     "therapeutic_flag": false,
     "topical": false,
     "usan_stem": null,

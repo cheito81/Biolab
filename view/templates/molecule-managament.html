@@ -8,7 +8,7 @@
         <th>MWT</th>
         <th>Species</th>
         <th>Smiles</th>
-        <th>qed_weighted</th>
+        <!--<th>qed_weighted</th>-->
         <th>Name</th>
         <th>Structure Type</th>
         <td >
@@ -48,12 +48,12 @@
           </div>
           <div ng-show="userType==1">{{ moleculeObj.canonical_smiles }}</div>
         </td>
-        <td>
+        <!--<td>
           <div ng-show="userType==0" class="form-group">
           <input type="text" class="form-control" id="qed_weighted{{$index}}" ng-model="moleculeObj.qed_weighted"  />
           </div>
           <div ng-show="userType==1">{{ moleculeObj.qed_weighted }}</div>
-        </td>
+        </td>-->
         <td>
           <div ng-show="userType==0" class="form-group">
           <input type="text" class="form-control" id="pref_name{{$index}}" ng-model="moleculeObj.pref_name"  />
@@ -68,8 +68,7 @@
           <div ng-show="userType==1">{{ moleculeObj.structure_type }}</div>
         </td>
         <td>
-          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.similaryMolecules($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fa fa-search"></i></button>
-          
+          <button type="button" class="btn btn-info" ng-click="moleculeCtrl.similaryMolecules($index);$parent.$parent.showForm=5" ng-disabled="modMoleculeForm.$invalid"><i class="fa fa-search"></i></button>
           
           <button ng-show="userType==0" type="button" class="btn btn-success" ng-click="moleculeCtrl.modifyMolecule($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fas fa-check"></i></button>
           <button ng-show="userType==0" type="button" class="btn btn-danger" ng-click="moleculeCtrl.removeMolecule($index)" ng-disabled="modMoleculeForm.$invalid"><i class="fas fa-trash-alt"></i></button>

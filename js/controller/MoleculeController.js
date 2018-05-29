@@ -245,7 +245,6 @@
         this.similaryMolecules = function (index) {
 
             $scope.moleculesArrayApi = [];
-            $scope.moleculeOption = 1;
             $smile = $scope.moleculesArrayAux[index].canonical_smiles; //smile
             $scope.moleculeId = $scope.moleculesArrayAux[index].molecule_chembl_id; //ID
 
