@@ -23,36 +23,36 @@ inputData$jsonData
             mydb <- openDB("dawbio1805", "Ew5kaer6", "dawbio1805", "localhost")
             allMolecules <- execSQLQuery(mydb, "select * from molecules")
 
-            setwd("/var/www/html/BioLabTechnology/statisticsFiles/boxPlots")
+            setwd("/var/www/html/statisticsFiles/boxPlots")
 
             png("boxPlotMolecularWeight.png")
-            boxplot(allMolecules$moleculeWeight,main="Box plot molecular weight")
+            boxplot(allMolecules$full_mwt,main="Box plot molecular weight")
             dev.off()
 
             png("histMolecularWeight.png")
-            hist(allMolecules$moleculeWeight,main="Hist molecular weight")
+            hist(allMolecules$full_mwt,main="Hist molecular weight")
             dev.off()
 
             file1<-"statisticsFiles/boxPlots/boxPlotMolecularWeight.png"
             file2<-"statisticsFiles/boxPlots/histMolecularWeight.png"
 
             statistic<-new.env(hash = TRUE)
-            statistic$min<-min(allMolecules$moleculeWeight)
-            statistic$max<-max(allMolecules$moleculeWeight)
-            statistic$mean<- mean(allMolecules$moleculeWeight)
+            statistic$min<-min(allMolecules$full_mwt)
+            statistic$max<-max(allMolecules$full_mwt)
+            statistic$mean<- mean(allMolecules$full_mwt)
 
-            statistic$median<- median(allMolecules$moleculeWeight, na.rm=FALSE)
+            statistic$median<- median(allMolecules$full_mwt, na.rm=FALSE)
 
-            statistic$quantile <- quantile(allMolecules$moleculeWeight, c(0,0.1,0.2,0.8,1))
-
-
-            statistic$range<-max(allMolecules$moleculeWeight)- min(allMolecules$moleculeWeight)
-            IQR(allMolecules$moleculeWeight)
+            statistic$quantile <- quantile(allMolecules$full_mwt, c(0,0.1,0.2,0.8,1))
 
 
-            statistic$var<-var(allMolecules$moleculeWeight)
+            statistic$range<-max(allMolecules$full_mwt)- min(allMolecules$full_mwt)
+            IQR(allMolecules$full_mwt)
 
-            statistic$sd<-sd(allMolecules$moleculeWeight) # == sqrt(var(osteoporosisFile$edad))
+
+            statistic$var<-var(allMolecules$full_mwt)
+
+            statistic$sd<-sd(allMolecules$full_mwt) # == sqrt(var(osteoporosisFile$edad))
 
 
           },
