@@ -47,9 +47,10 @@ CREATE TABLE `molecules` (
   `full_mwt` float NOT NULL,
   `molecular_species` varchar(100) NOT NULL,
   `canonical_smiles` varchar(2000) NOT NULL,
-  `qed_weighted` varchar(250) NOT NULL,
+  `qed_weighted` varchar(250) DEFAULT NULL,
   `pref_name` varchar(150) NOT NULL,
-  `structure_type` varchar(150) NOT NULL
+  `structure_type` varchar(150) NOT NULL,
+  PRIMARY KEY (`molecule_chembl_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

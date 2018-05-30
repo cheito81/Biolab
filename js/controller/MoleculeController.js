@@ -161,8 +161,7 @@
               $scope.molecule = angular.copy($scope.molecule);
 
               //Server conenction to verify molecule's data
-              
-
+              $scope.molecule.qed_weighted = null;
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 1,
                 action: 10000,
