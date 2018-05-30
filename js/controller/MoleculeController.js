@@ -68,7 +68,7 @@
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
-                  //console.log(outPutData);
+                  
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var molecule = new Molecule();
                         molecule.construct(outPutData[1][i].molecule_chembl_id,
@@ -107,7 +107,7 @@
         * @return: none
         */
         this.modifyMolecule = function (index) {
-            console.log($scope.moleculesArrayAux[index]);
+            
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 1
                 , action: 10020
@@ -161,7 +161,7 @@
               $scope.molecule = angular.copy($scope.molecule);
 
               //Server conenction to verify molecule's data
-              console.log($scope.molecule);
+              
 
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 1,
@@ -182,7 +182,7 @@
                   }
                 }
               });
-          //console.log($scope.molecule.molecule_chembl_id);
+         
         };
 
         /**
@@ -211,7 +211,7 @@
                   if (outPutData[0] === true) {
                       
                       $scope.moleculesArrayAux.splice(index, 1);
-                      console.log($scope.moleculesArrayAux);
+                      
                       $scope.moleculesArray = angular.copy($scope.moleculesArrayAux);
 
                       alert("Molecule deleted correctly");
@@ -245,7 +245,6 @@
         this.similaryMolecules = function (index) {
 
             $scope.moleculesArrayApi = [];
-            $scope.moleculeOption = 1;
             $smile = $scope.moleculesArrayAux[index].canonical_smiles; //smile
             $scope.moleculeId = $scope.moleculesArrayAux[index].molecule_chembl_id; //ID
 
@@ -256,7 +255,7 @@
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
-                  console.log(outPutData);
+                  
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var molecule = new Molecule();
                         molecule.construct(outPutData[1][i].molecule_chembl_id, outPutData[1][i].full_molformula, outPutData[1][i].full_mwt, outPutData[1][i].molecular_species, outPutData[1][i].canonical_smiles, outPutData[1][i].qed_weighted, outPutData[1][i].pref_name, outPutData[1][i].structure_type);

@@ -105,12 +105,12 @@
     <div ng-show="showForm==2">
       <user-register></user-register>
     </div>
-    <div ng-show="showForm==4" ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
+    <div  ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
 
-      <div ng-show="moleculeOption==0">
+      <div ng-show="$parent.showForm==4">
         <molecule-managament></molecule-managament>
       </div>
-      <div ng-show="moleculeOption==1">
+      <div ng-show="$parent.showForm==5">
         <molecule-show></molecule-show>
       </div>
 

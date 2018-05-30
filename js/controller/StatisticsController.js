@@ -11,22 +11,19 @@
 
 			promise.then(function (outPutData) {
 				if(outPutData[0]== true)	{
-						console.log(outPutData);
+						
 						$scope.file1 = outPutData[1];
 						$scope.file2 = outPutData[2];
 						$scope.statistics = angular.fromJson(outPutData[3]);
 				}
 				else	{
-					console.log(outPutData[0]);
 					if(angular.isArray(outPutData[1]))		{
 						alert(outPutData[1]);
 					}
 					else {alert("There has been an error in the server, try later");}
 				}
 			});
-		};
-
-		
+		}
 	}]);
 
 
