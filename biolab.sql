@@ -27,6 +27,8 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+ALTER TABLE `users` ADD UNIQUE(`nick`);
+
 --
 -- Dumping data for table `users`
 --
