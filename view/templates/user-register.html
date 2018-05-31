@@ -31,9 +31,11 @@
         <label class=" control-label" for="formGroup">Repeat password:</label>
         <div class="">
             <input class="form-control" id="password2" type="password" ng-model="passControl" name="password2" ng-minlength="6" required ng-change="userCtrl.checkPassword()"/>
-            <p class="help-block text-danger" ng-if="newUser.password != passControl && passControl.length > 0" >
+            <p class="help-block text-danger" ng-if="newUser.password != passControl" >
                 Password do not match
             </p>
+            <span class="text-danger" ng-show="!userManagement.$pristine && userManagement.password2.$error.required">repeat password is required</span>
+            <span class="text-danger" ng-show="!userManagement.$pristine && userManagement.password2.$error.password2">Please enter a password greater than 5 characters</span>
         </div>
 
         <label class=" control-label" for="formGroup">User Type:</label>
@@ -45,11 +47,10 @@
     
     <div class="form-group">
         <label class=" control-label" for="formGroup">Email Adress:</label>
-        <div class="">
-            <input class="form-control" type="email" ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" ng-model="newUser.mail" required/>
-            <p class="help-block text-danger" ng-show="newUser.mail.$invalid" >
-                Mail incorrect
-            </p>
+        <div >
+            <input class="form-control" type="email" name="email" ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" ng-model="newUser.mail" required/>
+            <span class="text-danger" ng-show="!userManagement.$pristine && userManagement.email.$error.required">Email is required</span>
+            <span class="text-danger" ng-show="!userManagement.$pristine && userManagement.email.$error.email">Please enter a valid email</span>
         </div>
     </div>
 
