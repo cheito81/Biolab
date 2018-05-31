@@ -93,7 +93,7 @@ class MoleculeController implements ControllerInterface {
 				else { 
 							$outPutData[]= true;
 							$molecule = new Molecule();
-		                    $molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type,$moleculeObj->pref_name,$moleculeObj->structure_type );
+		                    $molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->qed_weighted,$moleculeObj->pref_name,$moleculeObj->structure_type );
 
 								$molecule->setMolecule_chembl_id(MoleculeADO::create($molecule));
 								
@@ -130,7 +130,7 @@ class MoleculeController implements ControllerInterface {
 		$outPutData[0]= true;
 		foreach($moleculesArray as $moleculeObj) {
 			$molecule = new Molecule();
-			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type, $moleculeObj->pref_name, $moleculeObj->structure_type );
+			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->qed_weighted, $moleculeObj->pref_name, $moleculeObj->structure_type );
 			//var_dump($molecule);
 			MoleculeADO::update($molecule);
 		}
@@ -145,7 +145,7 @@ class MoleculeController implements ControllerInterface {
 		$outPutData[0]= true;
 		foreach($moleculesArray as $moleculeObj) {
 			$molecule = new Molecule();
-			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->molecule_type,$moleculeObj->pref_name,$moleculeObj->structure_type );
+			$molecule->setAll($moleculeObj->molecule_chembl_id, $moleculeObj->full_molformula, $moleculeObj->full_mwt, $moleculeObj->molecular_species, $moleculeObj->canonical_smiles, $moleculeObj->qed_weighted,$moleculeObj->pref_name,$moleculeObj->structure_type );
 			MoleculeADO::delete($molecule);
 		}
 		return $outPutData;
@@ -176,7 +176,7 @@ class MoleculeController implements ControllerInterface {
 			foreach ($moleculesArrayAPI as $mol) {
 				$molecule = new Molecule();
 				
-				$molecule->setAll($mol->{"molecule_chembl_id"}, $mol->{"molecule_properties"}->{"full_molformula"}, $mol->{"molecule_properties"}->{"full_mwt"}, $mol->{"molecule_properties"}->{"molecular_species"}, $mol->{"molecule_structures"}->{"canonical_smiles"},$mol->{"molecule_type"},$mol->{"pref_name"},$mol->{"structure_type"});
+				$molecule->setAll($mol->{"molecule_chembl_id"}, $mol->{"molecule_properties"}->{"full_molformula"}, $mol->{"molecule_properties"}->{"full_mwt"}, $mol->{"molecule_properties"}->{"molecular_species"}, $mol->{"molecule_structures"}->{"canonical_smiles"},$mol->{"molecule_properties"}->{"qed_weighted"},$mol->{"pref_name"},$mol->{"structure_type"});
 
 				array_push($outPutData[1], $molecule);
 				

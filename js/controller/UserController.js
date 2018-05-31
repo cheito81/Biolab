@@ -10,9 +10,7 @@
   angular.module('infoTechApp').controller("UserController", ['$http', '$scope', '$window', '$cookies', 'accessService', 'userConnected', '$filter', function($http, $scope, $window, $cookies, accessService, userConnected,$filter) {
     //scope variables
     $scope.userOption = 1;
-     //Pagination variables
-        $scope.pageSize = 4;
-        $scope.currentPage = 1;
+     
     //$scope.userType;
     $scope.user = new User(); 
     if (typeof(Storage) == "undefined") {
@@ -40,29 +38,12 @@
 
     $scope.nickValid = true;
     $scope.userImage;
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
+    
     $scope.newUser = new User();
     $scope.passControl;
-    //$scope.newUser.userType = 0;
-
-    $scope.dateOptions = {
-      dateDisabled: "",
-      formatYear: 'yyyy',
-      maxDate: new Date(),
-      minDate: "",
-      startingDay: 1
-    };
-
-    $scope.birthDate = {
-      opened: false
-    };
-
-    $scope.openBirthDate = function() {
-      $scope.birthDate.opened = true;
-    };
 
     //Methods
+
     /**
      * @name: userManagement
      * @author: Jose Gimenez
@@ -80,8 +61,7 @@
 
           var imagesArrayToSend = new FormData();
           imagesArrayToSend.append('images[]', imageFile);
-          //imagesArrayToSend['images[]']
-
+          
           $http({
             method: 'POST',
             url: 'php/controller/MainController.php?controllerType=2&action=10010&jsonData=' + $scope.newUser.getNick(),
@@ -95,9 +75,6 @@
           }).success(function(outPutData) {
             if (outPutData[0] === true) {
               //File uploaded
-              //$scope.user.setId(null);
-
-              //$scope.newUser.setActive(1);
               $scope.newUser.setImage(outPutData[1][0]);
               $scope.newUser = angular.copy($scope.newUser);
 
@@ -191,12 +168,12 @@
 
         /**
     @name checkPassword
-    @description Validates Dni 
+    @description Check password 
     @version 1.0
     @date 17/04/2017
     @author Jose Gimenez
-    @param Dni of user
-    @return true if valid false otherwise.
+    @param check if equal password
+    @return none.
     */
     this.checkPassword=function(){
       $scope.passwordValid = true;
@@ -226,7 +203,6 @@
     */
     this.checkNick=function(){
       $scope.nickValid = true;
-      //console.log("check");
       $("#userNick").addClass("ng-valid");
       $("#userNick").removeClass("ng-invalid");
       var userFound = new User();
@@ -238,9 +214,8 @@
           $("#userNick").removeClass("ng-valid");
           $scope.nickValid = false;
           break;
-          //console.log($scope.nickValid);
         }
-        //console.log($scope.usersArray[i]);
+        
       }
     };
 

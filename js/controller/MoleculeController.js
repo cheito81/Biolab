@@ -7,7 +7,7 @@
  */
 //Angular code
 (function() {
-  angular.module('infoTechApp').controller("MoleculeController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function($http, $scope, $window, $cookies, accessService, $filter,DTOptionsBuilder, DTColumnBuilder,DTColumnDefBuilder) {
+  angular.module('infoTechApp').controller("MoleculeController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function($http, $scope, $window, $cookies, accessService, $filter,$timeout,Excel) {
     
     //scope variables
     //$scope.moleculeOption = 0;
@@ -23,7 +23,29 @@
 
     $scope.moleculeOption = 0;
 
-
+            $scope.exportData = function () {
+                $('#moleculeShow').tableExport({ type: 'json', escape: 'false' });
+            };
+            
+            $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+            var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
+            $timeout(function(){location.href=exportHref;},100); // trigger download
+        }
+            
+             $scope.exportToPdf = function(){
+        html2canvas(document.getElementById('moleculeShow'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500,
+                    }]
+                };
+                 pdfMake.createPdf(docDefinition).download("similariesTo"+$scope.moleculeId+".pdf");
+            }
+        });
+     }
   
 
         /**
@@ -46,7 +68,7 @@
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
-                  //console.log(outPutData);
+                  
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var molecule = new Molecule();
                         molecule.construct(outPutData[1][i].molecule_chembl_id,
@@ -54,7 +76,7 @@
                                             outPutData[1][i].full_mwt,
                                             outPutData[1][i].molecular_species,
                                             outPutData[1][i].canonical_smiles,
-                                            outPutData[1][i].molecule_type,
+                                            outPutData[1][i].qed_weighted,
                                             outPutData[1][i].pref_name,
                                             outPutData[1][i].structure_type);
                         $scope.moleculesArray.push(molecule);
@@ -85,7 +107,7 @@
         * @return: none
         */
         this.modifyMolecule = function (index) {
-            console.log($scope.moleculesArrayAux[index]);
+            
             var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 1
                 , action: 10020
@@ -139,8 +161,7 @@
               $scope.molecule = angular.copy($scope.molecule);
 
               //Server conenction to verify molecule's data
-              console.log($scope.molecule);
-
+              $scope.molecule.qed_weighted = null;
               var promise = accessService.getData("php/controller/MainController.php", true, "POST", {
                 controllerType: 1,
                 action: 10000,
@@ -160,7 +181,7 @@
                   }
                 }
               });
-          //console.log($scope.molecule.molecule_chembl_id);
+         
         };
 
         /**
@@ -189,7 +210,7 @@
                   if (outPutData[0] === true) {
                       
                       $scope.moleculesArrayAux.splice(index, 1);
-                      console.log($scope.moleculesArrayAux);
+                      
                       $scope.moleculesArray = angular.copy($scope.moleculesArrayAux);
 
                       alert("Molecule deleted correctly");
@@ -223,7 +244,6 @@
         this.similaryMolecules = function (index) {
 
             $scope.moleculesArrayApi = [];
-            $scope.moleculeOption = 1;
             $smile = $scope.moleculesArrayAux[index].canonical_smiles; //smile
             $scope.moleculeId = $scope.moleculesArrayAux[index].molecule_chembl_id; //ID
 
@@ -234,10 +254,10 @@
             });
             promise.then(function (outPutData) {
                 if (outPutData[0] === true) {
-                  console.log(outPutData);
+                  
                     for (var i = 0; i < outPutData[1].length; i++) {
                         var molecule = new Molecule();
-                        molecule.construct(outPutData[1][i].molecule_chembl_id, outPutData[1][i].full_molformula, outPutData[1][i].full_mwt, outPutData[1][i].molecular_species, outPutData[1][i].canonical_smiles, outPutData[1][i].molecule_type, outPutData[1][i].pref_name, outPutData[1][i].structure_type);
+                        molecule.construct(outPutData[1][i].molecule_chembl_id, outPutData[1][i].full_molformula, outPutData[1][i].full_mwt, outPutData[1][i].molecular_species, outPutData[1][i].canonical_smiles, outPutData[1][i].qed_weighted, outPutData[1][i].pref_name, outPutData[1][i].structure_type);
                         $scope.moleculesArrayApi.push(molecule);
                     }
 
@@ -317,3 +337,19 @@
   });
 
 })();
+
+
+        angular.module('infoTechApp').factory('Excel',function($window){
+        var uri='data:application/vnd.ms-excel;base64,',
+            template='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+            base64=function(s){return $window.btoa(unescape(encodeURIComponent(s)));},
+            format=function(s,c){return s.replace(/{(\w+)}/g,function(m,p){return c[p];})};
+        return {
+            tableToExcel:function(tableId,worksheetName){
+                var table=$(tableId),
+                    ctx={worksheet:worksheetName,table:table.html()},
+                    href=uri+base64(format(template,ctx));
+                return href;
+            }
+        };
+    })

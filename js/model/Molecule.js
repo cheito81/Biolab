@@ -12,7 +12,7 @@ function Molecule (){
   this.full_mwt;
   this.molecular_species;
   this.canonical_smiles;
-  this.molecule_type;
+  this.qed_weighted;
   this.pref_name;
   this.structure_type;
 
@@ -20,13 +20,13 @@ function Molecule (){
   //Methods
   
   //Constructor
-  this.construct = function (molecule_chembl_id, full_molformula, full_mwt, molecular_species,canonical_smiles,molecule_type,pref_name,structure_type)  {
+  this.construct = function (molecule_chembl_id, full_molformula, full_mwt, molecular_species,canonical_smiles,qed_weighted,pref_name,structure_type)  {
     this.molecule_chembl_id = molecule_chembl_id;
     this.full_molformula=full_molformula;
     this.full_mwt = full_mwt;
     this.molecular_species = molecular_species;
     this.canonical_smiles = canonical_smiles;
-    this.molecule_type=molecule_type;
+    this.qed_weighted=qed_weighted;
     this.pref_name = pref_name;
     this.structure_type = structure_type;
   };
@@ -53,8 +53,8 @@ function Molecule (){
     return this.canonical_smiles;
   };
 
-  this.getMolecule_type = function ()  {
-    return this.molecule_type;
+  this.getQed_weighted = function ()  {
+    return this.qed_weighted;
   };
 
   this.getPref_name = function ()  {
@@ -87,8 +87,8 @@ function Molecule (){
     this.canonical_smiles = canonical_smiles;
   };
 
-  this.setMolecule_type = function (molecule_type)  {
-    this.molecule_type = molecule_type;
+  this.setQed_weighted = function (qed_weighted)  {
+    this.qed_weighted = qed_weighted;
   };
 
   this.setPref_name = function (pref_name)  {
