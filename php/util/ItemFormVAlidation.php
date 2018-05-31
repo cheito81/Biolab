@@ -66,9 +66,6 @@ public static function moleculeEmptyfields ($moleculeObj){
     if ($moleculeObj->canonical_smiles=="") {
         $empties .= "empty canonical_smiles\n";
     }
-    if ($moleculeObj->molecule_type=="") {
-        $empties .= "empty molecule_type\n";
-    }
     if ($moleculeObj->pref_name=="") {
         $empties .= "empty pref_name\n";
     }

@@ -5,9 +5,11 @@
   Similar molecules for: <strong>{{moleculeId}}</strong>
 </div>
 </div>
-
-
-
+<br/>
+    
+      <button ng-click="exportToPdf()">PDF</button>
+      <br/>
+      <br/>
  <table id="moleculeShow" datatable="ng" dt-options="dtOptions" class="table export-table">
     <thead>
       <tr>
@@ -16,7 +18,7 @@
         <th>MWT</th>
         <th>Species</th>
         <th>Smiles</th>
-        <th>Type</th>
+        <th>QED</th>
         <th>Name</th>
         <th>Structure Type</th>
       </tr>
@@ -39,7 +41,7 @@
           {{ moleculeObj.canonical_smiles }}
         </td>
         <td>
-          {{ moleculeObj.molecule_type }}
+          {{ moleculeObj.qed_weighted }}
         </td>
         <td>
           {{ moleculeObj.pref_name }}
@@ -51,5 +53,5 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-info" ng-click="moleculeOption=0">Back</button>
+  <button type="button" class="btn btn-info" ng-click="$parent.showForm=4">Back</button>
 

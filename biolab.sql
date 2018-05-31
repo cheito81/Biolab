@@ -27,6 +27,8 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+ALTER TABLE `users` ADD UNIQUE(`nick`);
+
 --
 -- Dumping data for table `users`
 --
@@ -47,19 +49,20 @@ CREATE TABLE `molecules` (
   `full_mwt` float NOT NULL,
   `molecular_species` varchar(100) NOT NULL,
   `canonical_smiles` varchar(2000) NOT NULL,
-  `molecule_type` varchar(250) NOT NULL,
+  `qed_weighted` varchar(250) DEFAULT NULL,
   `pref_name` varchar(150) NOT NULL,
-  `structure_type` varchar(150) NOT NULL
+  `structure_type` varchar(150) NOT NULL,
+  PRIMARY KEY (`molecule_chembl_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `molecules`
 --
 
-INSERT INTO `molecules` (`molecule_chembl_id`, `full_molformula`, `full_mwt`, `molecular_species`, `canonical_smiles`, `molecule_type`, `pref_name`, `structure_type`) VALUES
-('CHEMBL396778', 'C17H19FN2O2', 302.34, 'NEUTRAL', 'C[C@H(NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N', 'Small molecule', 'SAFINAMIDE', 'MOL'),
-('CHEMBL6329', 'C17H12ClN3O3', 341.75, 'ACID', 'Cc1cc(ccc1C(=O)c2ccccc2Cl)N3N=CC(=O)NC3=O', 'Small molecule', '', 'MOL'),
-('CHEMBL82327', 'C17H19FN2O2', 302.34, 'NEUTRAL', 'C[C@@H (NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N', 'Small molecule', '', 'MOL');
+INSERT INTO `molecules` (`molecule_chembl_id`, `full_molformula`, `full_mwt`, `molecular_species`, `canonical_smiles`, `qed_weighted`, `pref_name`, `structure_type`) VALUES
+('CHEMBL396778', 'C17H19FN2O2', 302.34, 'NEUTRAL', 'C[C@H(NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N', '', 'SAFINAMIDE', 'MOL'),
+('CHEMBL6329', 'C17H12ClN3O3', 341.75, 'ACID', 'Cc1cc(ccc1C(=O)c2ccccc2Cl)N3N=CC(=O)NC3=O', '', '', 'MOL'),
+('CHEMBL82327', 'C17H19FN2O2', 302.34, 'NEUTRAL', 'C[C@@H (NCc1ccc(OCc2cccc(F)c2)cc1)C(=O)N', '', '', 'MOL');
 
 
 CREATE USER IF NOT EXISTS 'dawbio1805'@'localhost' IDENTIFIED BY 'Ew5kaer6';

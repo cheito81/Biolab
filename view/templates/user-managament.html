@@ -1,5 +1,5 @@
 <form name="modReviewsForm" novalidate>
-  <table id="UserManagament" datatable="ng" class="table">
+  <table id="UserManagament" datatable="ng" class="table text-center">
     <thead>
       <tr>
         <th>ID</th>
@@ -7,6 +7,7 @@
         <th>Surname</th>
         <th>Mail</th>
         <th>Nick</th>
+        <th>Registration Date</th>
         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   <i class="fas fa-user-plus"></i> New user
 </button></td>
@@ -40,6 +41,9 @@
           <input type="text"  class="form-control" id="userNick{{$index}}" ng-model="value.nick" required />
           </div>
           <div style="display: none;">{{ value.nick }}</div>
+        </td>
+        <td>
+        {{ value.entryDate }}
         </td>
 
         <td>
