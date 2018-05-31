@@ -7,12 +7,13 @@
 */
 //Angular code
 (function () {
-    angular.module('infoTechApp').controller("SessionController", ['$http', '$scope', '$window', '$cookies', 'accessService', 'userConnected', function ($http, $scope, $window, $cookies, accessService, userConnected) {
+    angular.module('biolabApp').controller("SessionController", ['$http', '$scope', '$window', '$cookies', 'accessService', 'userConnected', function ($http, $scope, $window, $cookies, accessService, userConnected) {
         //scope variables
         $scope.user = new User();
         $scope.userAction = 0;
         $scope.userType;
         $scope.showForm = 0;
+        $scope.panel = 0;
         $scope.moleculeOption = 0;
         $scope.sessionOpened = false;
 

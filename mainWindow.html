@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html ng-app="infoTechApp" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<html ng-app="biolabApp" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -65,11 +65,11 @@
 
 </head>
 
-<body ng-show="sessionOpened"  ng-controller="SessionController as sessionCtrl" ng-init="userAction=1;sessionCtrl.sessionControl()">
+<body ng-show="sessionOpened" class="fondoMainWindow" ng-controller="SessionController as sessionCtrl" ng-init="userAction=1;sessionCtrl.sessionControl()">
   
 
   <!-- ==== Main menu ===== -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md  navbar-light bg-light">
     <a class="navbar-brand" href="mainWindow.html">BioLab Technology</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -97,28 +97,43 @@
     </div>
 
   </nav>
+  <div class="container mt-4" ng-show="showForm==0" >
+    <div class=" bg-white">
+      <h1 class="">BioLab - Molecules Technology</h1>
+      <p>
+Nowadays, the change in many of the industrial sectors as we knew them is evident. The center of all this change is in the large amount of data that they generate and store every day. This information, together with the application of advanced data analysis techniques, have transformed the commerce industry in Internet, the financial industry, manufacturing, human resources and, of course, genetic services. The analysis of genetic data is allowing this transformation. There are different applications of data analysis in the genetics industry, many of which are aimed at improving the efficiency of molecular biology research and study projects.
+</p>
+<p class="mt-2">
+BioLab is a web application that allows drug researchers to compare molecules through their molecular structure (smile) by returning a list of similar molecules, and thus be able to predict what their purpose might be. It also provides the option of a statistical summary of the molecules in our database as well as making a boxplot and a histogram.</p>
+    </div>
+  </div>
 
-    
-    <div ng-controller="UserController as userCtrl" class="container pt-5" ng-show="showForm==3" ng-init="userCtrl.loadUsers()">    
+    <div ng-controller="UserController as userCtrl" class="container pt-5 bg-white" ng-show="showForm==3" ng-init="userCtrl.loadUsers()">    
       <user-managament></user-managament>
     </div>
     <div ng-show="showForm==2">
       <user-register></user-register>
     </div>
-    <div  ng-controller="MoleculeController as moleculeCtrl" ng-init="moleculeCtrl.loadMolecules()">
+    <div  ng-controller="MoleculeController as moleculeCtrl" class="container-fluid pt-5" ng-init="moleculeCtrl.loadMolecules()">
 
-      <div ng-show="$parent.showForm==4">
+      <div ng-show="$parent.showForm==4" class="bg-white">
         <molecule-managament></molecule-managament>
       </div>
-      <div ng-show="$parent.showForm==5">
+      <div ng-show="$parent.showForm==5" class="bg-white">
         <molecule-show></molecule-show>
       </div>
 
     </div>
     
-    <div ng-show="showForm==6" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
+    <div ng-show="showForm==6" class="container pt-5 bg-white" ng-controller="StatisticsController as statisticsCtrl" ng-init="statisticsCtrl.generateBoxPlotMolecularWeight()">
       <molecule-statistics></molecule-statistics>
-    </div>
+      </div>
+ 
+
+<footer class="bg-light">
+            <p class="text-dark text-center footer-copyright py-3">©2018 BioLab-Technology, Aplication
+             by José Giménez and Marvin Hernandez</p> 
+</footer> 
 </body>
 
 </html>

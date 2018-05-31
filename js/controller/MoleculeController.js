@@ -7,7 +7,7 @@
  */
 //Angular code
 (function() {
-  angular.module('infoTechApp').controller("MoleculeController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function($http, $scope, $window, $cookies, accessService, $filter,$timeout,Excel) {
+  angular.module('biolabApp').controller("MoleculeController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function($http, $scope, $window, $cookies, accessService, $filter,$timeout,Excel) {
     
     //scope variables
     //$scope.moleculeOption = 0;
@@ -293,7 +293,7 @@
    * @date: 17/05/2018
    * @return none
    */
-  angular.module('infoTechApp').directive("moleculeManagament", function() {
+  angular.module('biolabApp').directive("moleculeManagament", function() {
     return {
       restrict: 'E',
       templateUrl: "view/templates/molecule-managament.html",
@@ -310,7 +310,7 @@
    * @date: 22/05/2018
    * @return none
    */
-  angular.module('infoTechApp').directive("moleculeShow", function() {
+  angular.module('biolabApp').directive("moleculeShow", function() {
     return {
       restrict: 'E',
       templateUrl: "view/templates/molecule-show.html",
@@ -327,7 +327,7 @@
    * @date: 17/05/2018
    * @return none
    */
-  angular.module('infoTechApp').directive("moleculesEntry", function() {
+  angular.module('biolabApp').directive("moleculesEntry", function() {
     return {
       restrict: 'E',
       templateUrl: "view/templates/molecules-entry.html",
@@ -339,7 +339,7 @@
 })();
 
 
-        angular.module('infoTechApp').factory('Excel',function($window){
+        angular.module('biolabApp').factory('Excel',function($window){
         var uri='data:application/vnd.ms-excel;base64,',
             template='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
             base64=function(s){return $window.btoa(unescape(encodeURIComponent(s)));},
