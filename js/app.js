@@ -5,15 +5,15 @@ $(document).ready(function () {
 
 (function(){
 
-  var infoTechApp = angular.module('infoTechApp', ['ng-currency', 'ui.bootstrap', 'ngCookies','datatables']);
+  var biolabApp = angular.module('biolabApp', ['ng-currency', 'ui.bootstrap', 'ngCookies','datatables']);
 
-  infoTechApp.factory('userConnected', function(){
+  biolabApp.factory('userConnected', function(){
       // I know this doesn't work, but what will?
       var user = new User();
       return user;
   });
 
-  infoTechApp.directive('validFile',function(){
+  biolabApp.directive('validFile',function(){
       return {
           require:'ngModel',
           link:function(scope,el,attrs,ctrl){
@@ -30,7 +30,7 @@ $(document).ready(function () {
       };
   });
 
-  infoTechApp.factory('accessService', function($http, $log, $q) {
+  biolabApp.factory('accessService', function($http, $log, $q) {
   	return {
   		getData: function(url, async, method, params, data) {
   			var deferred = $q.defer();

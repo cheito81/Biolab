@@ -16,3 +16,32 @@ img {
 .no-padding{
   padding: 0;
 }
+.fondoLogin{
+    width: 100%;
+    height: 100%;
+        background: url(../images/fondoLogin.jpg) no-repeat center center fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+}
+.fondoMainWindow{
+    width: 100%;
+    height: 100%;
+        background: url(../images/fondoMainWindow.jpg) no-repeat center center fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+}
+
+footer{
+    float: left;
+    color: #9d9d9d;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 5%;
+    clear: both;
+    text-align: center;
+}  

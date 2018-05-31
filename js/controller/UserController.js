@@ -7,7 +7,7 @@
  */
 //Angular code
 (function() {
-  angular.module('infoTechApp').controller("UserController", ['$http', '$scope', '$window', '$cookies', 'accessService', 'userConnected', '$filter', function($http, $scope, $window, $cookies, accessService, userConnected,$filter) {
+  angular.module('biolabApp').controller("UserController", ['$http', '$scope', '$window', '$cookies', 'accessService', 'userConnected', '$filter', function($http, $scope, $window, $cookies, accessService, userConnected,$filter) {
     //scope variables
     $scope.userOption = 1;
      
@@ -375,7 +375,7 @@
    * @date: 17/05/2017
    * @return none
    */
-  angular.module('infoTechApp').directive("userRegister", function() {
+  angular.module('biolabApp').directive("userRegister", function() {
     return {
       restrict: 'E',
       templateUrl: "view/templates/user-register.html",
@@ -392,7 +392,7 @@
    * @date: 17/05/2017
    * @return none
    */
-  angular.module('infoTechApp').directive("userManagament", function() {
+  angular.module('biolabApp').directive("userManagament", function() {
     return {
       restrict: 'E',
       templateUrl: "view/templates/user-managament.html",

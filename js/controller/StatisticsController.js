@@ -4,7 +4,7 @@
 //Angular code
 (function (){
 	//Application module
-	angular.module('infoTechApp').controller("StatisticsController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function ($http, $scope, $window, $cookies, accessService, $filter){
+	angular.module('biolabApp').controller("StatisticsController", ['$http','$scope', '$window', '$cookies','accessService','$filter', function ($http, $scope, $window, $cookies, accessService, $filter){
 
 		this.generateBoxPlotMolecularWeight = function ()	{
 			var promise = accessService.getData("R/controller/StatisticsController.R", true, "POST", "", {controllerType:0,action:10000, jsonData:JSON.stringify("")});
@@ -35,7 +35,7 @@
    * @date: 27/05/2018
    * @return none
    */
-  angular.module('infoTechApp').directive("moleculeStatistics", function() {
+  angular.module('biolabApp').directive("moleculeStatistics", function() {
     return {
       restrict: 'E',
       templateUrl: "view/templates/molecule-statistics.html",

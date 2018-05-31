@@ -1,5 +1,4 @@
-<br>
-<br>
+
 <div class="container container-fluid">
 <div class="alert alert-primary text-center" role="alert">
   Similar molecules for: <strong>{{moleculeId}}</strong>
@@ -7,7 +6,7 @@
 </div>
 <br/>
     
-      <button ng-click="exportToPdf()">PDF</button>
+      <button class="btn btn-group-lg btn-primary ml-4 " ng-click="exportToPdf()">PDF</button>
       <br/>
       <br/>
  <table id="moleculeShow" datatable="ng" dt-options="dtOptions" class="table export-table">
@@ -53,5 +52,5 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-info" ng-click="$parent.showForm=4">Back</button>
+  <button type="button" class="btn btn-info ml-4" ng-click="$parent.showForm=4">Back</button>
 

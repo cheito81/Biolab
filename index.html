@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html ng-app="infoTechApp" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<html ng-app="biolabApp" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -44,7 +44,7 @@
 
 </head>
 
-<body class="container" ng-controller="SessionController as sessionCtrl" ng-init="sessionCtrl.sessionControl()">
+<body class="container fondoLogin" ng-controller="SessionController as sessionCtrl" ng-init="sessionCtrl.sessionControl()">
 
   <br/>
   <br class="hidden-xs" />
@@ -54,65 +54,49 @@
 
   <div class="container">
         <form class="form-horizontal" role="form" name="userConnection" ng-submit="userCtrl.connection()" novalidate>
+
+
+        <div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h2>Please Login</h2>
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group has-danger">
-                        <label class="sr-only" for="email">Username</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input type="text" name="username" class="form-control" id="username" ng-model="user.nick"
+                <div class="col-md-6 mx-auto">
+
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Login</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                                <div class="form-group">
+                                    <label for="uname1">Nick</label>
+                                        <input type="text" name="username" class="form-control" id="username" ng-model="user.nick"
                                    placeholder="Username" required autofocus>
-                        </div>
-                    </div>
-                </div>
-                <!-- ========= ERROS =======-->
-                <!--<div class="col-md-3">
-                    <div class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                            <i class="fa fa-close"></i> Example error message
-                        </span>
-                    </div>
-                </div>-->
-                <!-- ======= END ERROS ====-->
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="sr-only" for="password">Password</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input type="password" name="password" class="form-control" id="password" ng-model="user.password"
+                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                      <input type="password" name="password" class="form-control" id="password" ng-model="user.password"
                                    placeholder="Password" required>
+                                    <div class="invalid-feedback">Enter your password too!</div>
+                                </div>
+                                <div>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-lg float-right" ng-disabled="userConnection.$invalid" value="Login"><i class="fas fa-sign-in-alt"></i> Login</button>
+                            </form>
                         </div>
+                        <!--/card-block-->
                     </div>
+                    <!-- /form card login -->
+
                 </div>
-                <div class="col-md-3">
-                    <div class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                        <!-- password error message here -->   
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row" style="padding-top: 1rem">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-success" ng-disabled="userConnection.$invalid" value="Login"><i class="fas fa-sign-in-alt"></i> Login</button>
-                </div>
-            </div>
+
         </form>
     </div>
 </div> <!-- End of session -->
+  
 </body>
 
 </html>
+
